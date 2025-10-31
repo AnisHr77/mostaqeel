@@ -5,13 +5,12 @@ import Home from "./pages/Home";
 function App() {
     return (
         <Router>
-            <div className="bg-[#0c0c14] min-h-screen">
+            <body>
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* يمكنك لاحقًا إضافة صفحات أخرى */}
                 </Routes>
-            </div>
+            </body>
         </Router>
     );
 }

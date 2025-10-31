@@ -84,9 +84,9 @@ export default function Navbar() {
 
     return (
         <nav className="w-full fixed top-0 left-0 z-50 bg-[#0c0c14]/95 backdrop-blur-md border-b border-gray-800 font-sans">
-            <div className=" mx-auto px-12  py-4 flex items-center justify-between">
+            <div className=" mx-auto px-10 lg:px-18 md:px-12  py-4 flex items-center justify-between">
                 {/* Left side: Logo + Links */}
-                <div className="flex items-center space-x-10">
+                <div className="flex items-center space-x-6">
                     <div className="flex items-center space-x-2">
                         <svg width="47" height="40" viewBox="0 0 47 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_2_23387)">
@@ -119,6 +119,7 @@ export default function Navbar() {
                             </defs>
                         </svg>
                     </div>
+                    <span className='w-0.1 h-7 border-1 border-zinc-800 hidden md:flex lg:flex'></span>
 
                     {/* Desktop Nav Links */}
                     <div className="hidden lg:flex items-center space-x-8 text-sm">
@@ -247,12 +248,12 @@ export default function Navbar() {
 
                     <Button
                         variant="outline"
-                        className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white px-5 py-2.5 font-medium rounded-lg transition-all duration-200 hover:border-gray-600"
+                        className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white px-5 py-3 font-medium rounded-xl transition-all duration-200 hover:border-gray-600"
                     >
                         Log in / Sign up
                     </Button>
 
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 font-medium flex items-center gap-2 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 font-medium flex items-center gap-2 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25">
                         Download Free
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.37592 12.7491C8.84037 14.2136 11.2147 14.2136 12.6792 12.7492L15.356 10.0724C15.8525 9.59284 15.8663 8.80151 15.3867 8.30495C14.9071 7.80838 14.1157 7.79463 13.6192 8.27424C13.6087 8.28428 13.5985 8.29456 13.5885 8.30495L11.2693 10.6233L11.2501 1.25C11.2501 0.559648 10.6904 0 10.0001 0C9.30975 0 8.7501 0.559648 8.7501 1.25L8.7676 10.6049L6.46678 8.30413C5.97021 7.82452 5.17889 7.83827 4.69928 8.33483C4.23143 8.81924 4.23143 9.58721 4.69928 10.0716L7.37592 12.7491Z" fill="white"/>

@@ -20,6 +20,8 @@ const Iq = () => {
         // 1️⃣ Network Optimizer
         {
             icon: Wifi,
+            id: 1,
+            layout: "vertical-visual-top",
             title: "Network Optimizer",
             text: "Prioritizes gaming traffic and stabilizes your connection for lower ping and fewer lag spikes.",
             visual: (
@@ -97,6 +99,8 @@ const Iq = () => {
         // 2️⃣ FPS Boost Engine
         {
             icon: Pause,
+            id: 2,
+            layout: "vertical-text-top",
             title: "FPS Boost Engine",
             text: "Maximizes frame rates by reallocating system resources and stopping non-essential background tasks.",
             visual: (
@@ -148,6 +152,8 @@ const Iq = () => {
         // 3️⃣ Real-Time System Clean-Up
         {
             icon: Cpu,
+            id: 3,
+            layout: "horizontal",
             title: "Real-Time System Clean-Up",
             text: "Frees up RAM and CPU by disabling unnecessary processes while you play — no manual setup.",
             visual: (
@@ -242,6 +248,8 @@ const Iq = () => {
         // 4️⃣ Windows Tuning
         {
             icon: Settings,
+            id: 4,
+            layout: "horizontal",
             title: "Windows Tuning",
             text: "Adjusts Windows settings that typically bottleneck performance — from power plans to visual effects.",
             visual: (
@@ -273,15 +281,40 @@ const Iq = () => {
     ];
 
     // Feature Item Component
-    const FeatureItem = ({ feature }) => (
-        <div className="flex flex-col md:flex-col items-center gap-6 ">
-            <div className="order-2 md:order-1">{feature.visual}</div>
-            <div className="text-left md:text-right flex-1 order-3">
-                <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
-                <p className="text-gray-400 w-full text-sm leading-relaxed">{feature.text}</p>
+    const FeatureItem = ({ feature }) => {
+        const isHorizontal = feature.layout === "horizontal";
+        const textOnTop = feature.layout === "vertical-text-top";
+
+        return (
+            <div
+                className={
+                    isHorizontal
+                        ? "flex flex-row items-center gap-6"
+                        : "flex flex-col items-center gap-6"
+                }
+            >
+                {/* TEXT */}
+                <div
+                    className={
+                        textOnTop ? "order-1 text-center" : isHorizontal ? "order-2 text-left" : "order-2 text-center"
+                    }
+                >
+                    <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
+                    <p className="text-gray-400 w-full text-sm leading-relaxed">{feature.text}</p>
+                </div>
+
+                {/* VISUAL */}
+                <div
+                    className={
+                        textOnTop ? "order-2" : isHorizontal ? "order-1" : "order-1"
+                    }
+                >
+                    {feature.visual}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
+
 
     return (
         <section className= "">
@@ -289,35 +322,27 @@ const Iq = () => {
                 What IQ Optimizer <br /> Actually Does.
             </div>
 
-            <div className="mb-8 px-24  justify-center relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16  mx-auto">
+            <div className="mb-8 px-24 justify-center relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4 mx-auto">
 
                 {/* Vertical Column Separators (Desktop only) */}
-                <div className="hidden lg:block absolute left-[25%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
+                <div className="hidden lg:block absolute left-[27%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
                 <div className="hidden lg:block absolute left-[50%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
 
-
-                {/* ✅ 1️⃣ Item */}
-                <div className="flex justify-center items-center">
+                {/* ✅ Item 1 */}
+                <div className="lg:col-span-2 flex justify-center items-center">
                     <FeatureItem feature={featuresList[0]} />
                 </div>
 
-                {/* ✅ 2️⃣ Item */}
-                <div className="flex justify-center items-center">
+                {/* ✅ Item 2 */}
+                <div className="lg:col-span-2 flex justify-center items-center">
                     <FeatureItem feature={featuresList[1]} />
                 </div>
 
-                {/* ✅ 3️⃣ + 4️⃣ stacked — span 2 cols */}
-                <div className="lg:col-span-2 flex flex-col justify-start items-center space-y-2">
-
-                    {/* Item 3 */}
-                    <FeatureItem feature={featuresList[2]} />
-
-                    {/* Horizontal Separator */}
+                {/* ✅ Item 3 + Item 4 */}
+                <div className="lg:col-span-4 pl-24 flex flex-col justify-start items-center space-y-8">
+                    <FeatureItem className={'relative left-20'} feature={featuresList[2]} style={{position:'relative',left:'50px'}} />
                     <div className="h-[1px] w-full bg-[#1E1D22] opacity-60"></div>
-
-                    {/* Item 4 */}
                     <FeatureItem feature={featuresList[3]} />
-
                 </div>
 
             </div>

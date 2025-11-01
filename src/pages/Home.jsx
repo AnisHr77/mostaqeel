@@ -96,12 +96,11 @@ export default function Home() {
                     </button>
                 </div>
 
-                {/* الملاحظة */}
                 <p className="text-gray-500 mt-8 text-sm flex items-center gap-2 gilroy-regular justify-center">
                     <FaWindows size={18} /> Supports Windows 10 and Higher
                 </p>
             </section>
-            <Welcome />
+            <Welcome/>
             <Complex/>
         </div>
     );

@@ -149,15 +149,18 @@ body {
 
 /* === Backgrounds === */
 body {
-    background: radial-gradient(
-            circle at bottom,
-            #020917 0%,
-            #030b1e 35%,
-            #06113c 50%,
-            #010307 70%,
+    background: linear-gradient(
+            to bottom,
+            #000000 0%,
+            rgb(9, 9, 26) 18%,
+            rgb(6, 14, 47) 30%,
+            rgb(1, 3, 9) 36%,
+            rgb(0, 1, 4) 50%,
             #000000 100%
     );
+
 }
+
 
 
 

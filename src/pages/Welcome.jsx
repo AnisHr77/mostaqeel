@@ -54,14 +54,14 @@ No upgrades needed. Just smarter performance in one click.`;
         <section className="  px-6 relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden text-white font-[Poppins]">
 
             {/* الصور */}
-            <div className="relative flex items-end justify-center gap-4 sm:gap-6 md:gap-10 w-full max-w-6xl z-20 mt-24 px-4">
+            <div className="relative flex items-end justify-center gap-4 sm:gap-6 md:gap-10 w-full max-w-7xl z-20 mt-24 px-4">
                 {/* يسار */}
                 <div className="relative z-10 translate-y-4">
                     <img
                         src={leftImg}
                         alt="Left"
-                        className="hidden sm:flex lg:flex md:flex w-[100px] sm:w-[150px] md:w-[190px] lg:w-[200px] xl:w-[220px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] object-contain"
-                        style={{ position: "relative", top: "-70px", left: "70px" }}
+                        className="hidden sm:flex lg:flex md:flex w-[100px] sm:w-[150px] md:w-[200px]  xl:w-[1000px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] object-contain"
+                        style={{ position: "relative", top: "-80px", right: "-246px" }}
                     />
                 </div>
 
@@ -74,7 +74,7 @@ No upgrades needed. Just smarter performance in one click.`;
                     <img
                         src={centerImg}
                         alt="Center"
-                        className="relative w-[500px] sm:w-[320px] md:w-[360px] lg:w-[420px] xl:w-[510px] rounded-2xl object-contain"
+                        className="relative w-[500px] sm:w-[220px] md:w-[300px] lg:w-[350px] xl:w-[1200px] rounded-2xl object-contain"
                     />
                 </div>
 
@@ -84,8 +84,8 @@ No upgrades needed. Just smarter performance in one click.`;
                     <img
                         src={rightImg}
                         alt="Right"
-                        className="w-[100px] hidden sm:w-[150px] sm:flex lg:flex md:flex md:w-[150px] lg:w-[170px] xl:w-[170px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] object-contain"
-                        style={{ position: "relative", top: "-70px", left: "-50px" }}
+                        className="w-[200px] hidden sm:w-[150px] sm:flex lg:flex md:flex md:w-[200px]  xl:w-[1000px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] object-contain"
+                        style={{ position: "relative", top: "-100px", left: "-246px" }}
                     />
                 </div>
             </div>
@@ -93,7 +93,7 @@ No upgrades needed. Just smarter performance in one click.`;
             {/* النص */}
             <div ref={textRef} className="relative  mt-2 text-center max-w-2xl px-6">
                 <svg
-                    className="relative top-[-250px] left-[5px] -z-10 md:top-[-120px] md:left-[-70px]"
+                    className="relative top-[-250px] left-[5px] -z-10 md:top-[-150px] md:left-[0px]"
                     width="47"
                     height="337"
                     viewBox="0 0 47 337"
@@ -111,8 +111,8 @@ No upgrades needed. Just smarter performance in one click.`;
                 </svg>
 
 
-                <div className="mb-6 relative top-[-235px] md:top-[-130px]" >
-                    <p className="text-xs text-start uppercase tracking-widest text-gray-500 mb-2">
+                <div className="mb-6 relative top-[-245px] md:top-[-160px] md:left-[70px] " >
+                    <p className="text-xs text-start uppercase tracking-widest text-gray-200 mb-2">
                         Get the Best Out of Your Setup
                     </p>
 
@@ -134,17 +134,7 @@ No upgrades needed. Just smarter performance in one click.`;
                 </div>
             </div>
 
-            {/* حركة الموجة */}
-            <style>{`
-                @keyframes wave {
-                  0% { transform: translateX(-100%); }
-                  50% { transform: translateX(100%); }
-                  100% { transform: translateX(-100%); }
-                }
-                .animate-wave {
-                  animation: wave 4s ease-in-out infinite;
-                }
-            `}</style>
+
         </section>
     );
 };

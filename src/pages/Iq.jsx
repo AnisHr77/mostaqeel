@@ -14,6 +14,7 @@ import {
     Lock,
     AppWindow,
 } from "lucide-react";
+import unnamed from "../assets/unnamed.png";
 
 const Iq = () => {
     const featuresList = [
@@ -25,9 +26,9 @@ const Iq = () => {
             title: "Network Optimizer",
             text: "Prioritizes gaming traffic and stabilizes your connection for lower ping and fewer lag spikes.",
             visual: (
-                <div className="relative w-70 h-28 flex items-center justify-center">
+                <div className="relative mb-2 left-8 w-70 h-24 flex items-center justify-center ">
                     {/* Main WiFi card */}
-                    <div className="relative w-50 h-38 bg-[#151519] rounded-xl border  shadow-xl flex items-center justify-center overflow-hidden">
+                    <div className="relative w-50 h-38 bg-[#151519] rounded-xl border  flex items-center justify-center overflow-hidden shadow-[0_0_50px_-20px_#3457db] ">
                         <div className="relative">
                             <svg className="relative top-20 left-14 z-50" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="40" height="40" rx="20" fill="#3457DC"/>
@@ -157,9 +158,9 @@ const Iq = () => {
             title: "Real-Time System Clean-Up",
             text: "Frees up RAM and CPU by disabling unnecessary processes while you play — no manual setup.",
             visual: (
-                <div className="relative w-54 p-4 bg-[#151519] rounded-2xl border border-blue-800/20 shadow-xl">
-                    <div className="absolute -top-8 -right-8 p-3  rounded-full">
-                        <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="relative mb-8 px-4 py-4 bg-[#151519] rounded-2xl border   shadow-[0_0_50px_-20px_#3457db]">
+                    <div className="absolute -top-8 -right-5 p-3  rounded-full">
+                        <svg width="44" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="14" y="12.9531" width="32" height="32" rx="12" fill="#3457DC"/>
                             <rect x="9.25" y="8.20312" width="40.5" height="40.5" rx="20.25" stroke="url(#paint0_linear_0_1)" strokeWidth="0.5"/>
                             <rect x="5.25" y="4.25" width="47.5" height="48.5" rx="23.75" stroke="url(#paint1_linear_0_1)" strokeWidth="0.5"/>
@@ -192,7 +193,7 @@ const Iq = () => {
                     <p className="text-gray-100 text-[10px]">// Freeing RAM & CPU...</p>
                     <p className="text-gray-100 text-[10px] mb-6">Unnecessary processes disabled</p>
 
-                    <div className="flex ml-4 justify-center gap-2 items-center text-white text-xs ">
+                    <div className="flex relative left-16  justify-center gap-2 items-center text-white text-xs ">
 
 
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -207,11 +208,11 @@ const Iq = () => {
                         </svg>
                         <span> +18 </span>
 
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.5 5.41865C14.8063 5.2499 15 4.9374 15 4.5874V3.74365C15 2.3624 13.8813 1.24365 12.5 1.24365H2.5C1.11875 1.2499 0 2.36865 0 3.7499V4.59365C0 4.9374 0.19375 5.25615 0.5 5.4249C0.84375 5.60615 1.25 5.95615 1.25 6.56865C1.25 7.18115 0.84375 7.5249 0.5 7.7124C0.19375 7.88115 0 8.19365 0 8.54365V12.1999C0 13.0624 0.7 13.7624 1.5625 13.7624H13.4375C14.3 13.7624 15 13.0624 15 12.1999V8.54365C15 8.1999 14.8063 7.88115 14.5 7.7124C14.1562 7.53115 13.75 7.18115 13.75 6.56865C13.75 5.95615 14.1562 5.6124 14.5 5.4249V5.41865ZM13.4375 13.1249H12.5V12.1874C12.5 12.0124 12.3625 11.8749 12.1875 11.8749C12.0125 11.8749 11.875 12.0124 11.875 12.1874V13.1249H9.375V12.1874C9.375 12.0124 9.2375 11.8749 9.0625 11.8749C8.8875 11.8749 8.75 12.0124 8.75 12.1874V13.1249H6.25V12.1874C6.25 12.0124 6.1125 11.8749 5.9375 11.8749C5.7625 11.8749 5.625 12.0124 5.625 12.1874V13.1249H3.125V12.1874C3.125 12.0124 2.9875 11.8749 2.8125 11.8749C2.6375 11.8749 2.5 12.0124 2.5 12.1874V13.1249H1.5625C1.04375 13.1249 0.625 12.7062 0.625 12.1874V11.2499H14.375V12.1874C14.375 12.7062 13.9563 13.1249 13.4375 13.1249ZM14.2 8.25615C14.3062 8.3124 14.375 8.41865 14.375 8.5374V10.6312H0.625V8.5374C0.625 8.41865 0.6875 8.31865 0.79375 8.25615C1.19375 8.0374 1.875 7.53115 1.875 6.5624C1.875 5.59365 1.2 5.0874 0.79375 4.86865C0.6875 4.8124 0.625 4.70615 0.625 4.5874V3.74365C0.625 2.7124 1.46875 1.86865 2.5 1.86865H12.5C13.5312 1.86865 14.375 2.7124 14.375 3.74365V4.5874C14.375 4.70615 14.3125 4.80615 14.2 4.86865C13.8 5.0874 13.125 5.59365 13.125 6.5624C13.125 7.53115 13.8 8.0374 14.2 8.25615ZM7.8125 4.0624V9.0624C7.8125 9.2374 7.675 9.3749 7.5 9.3749C7.325 9.3749 7.1875 9.2374 7.1875 9.0624V4.0624C7.1875 3.8874 7.325 3.7499 7.5 3.7499C7.675 3.7499 7.8125 3.8874 7.8125 4.0624ZM4.375 4.0624V9.0624C4.375 9.2374 4.2375 9.3749 4.0625 9.3749C3.8875 9.3749 3.75 9.2374 3.75 9.0624V4.0624C3.75 3.8874 3.8875 3.7499 4.0625 3.7499C4.2375 3.7499 4.375 3.8874 4.375 4.0624ZM11.25 4.0624V9.0624C11.25 9.2374 11.1125 9.3749 10.9375 9.3749C10.7625 9.3749 10.625 9.2374 10.625 9.0624V4.0624C10.625 3.8874 10.7625 3.7499 10.9375 3.7499C11.1125 3.7499 11.25 3.8874 11.25 4.0624Z" fill="white"/>
                         </svg>
-                        <span>1.3 GB</span>
-                        <svg width="47" height="40" viewBox="0 0 47 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <span className={'flex px-2 w-16 '}>1.3 GB</span>
+                        <svg className={'relative -left-14 '} width="30" height="40" viewBox="0 0 47 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="path-1-inside-1_657_303" fill="white">
                                 <path d="M0 0H47V28C47 34.6274 41.6274 40 35 40H0V0Z"/>
                             </mask>
@@ -222,7 +223,7 @@ const Iq = () => {
                     </div>
 
                     <div className="flex gap-1">
-                        <svg className={'absolute w-42 -left-30 top-28'} width="125" height="43" viewBox="0 0 125 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className={'absolute  -left-12 top-27'} width="125" height="43" viewBox="0 0 125 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="0.5" y="0.5" width="124" height="42" rx="11.5" fill="#151519" stroke="url(#paint0_radial_0_1)"/>
                             <g clipPath="url(#clip0_0_1)">
                                 <path d="M106 29C105.037 29 104.25 28.2125 104.25 27.25V16.75C104.25 15.7875 105.037 15 106 15C106.962 15 107.75 15.7875 107.75 16.75V27.25C107.75 28.2125 106.962 29 106 29ZM111.25 29C110.287 29 109.5 28.2125 109.5 27.25V20.25C109.5 19.2875 110.287 18.5 111.25 18.5C112.212 18.5 113 19.2875 113 20.25V27.25C113 28.2125 112.212 29 111.25 29ZM100.75 29C99.7875 29 99 28.2125 99 27.25V23.75C99 22.7875 99.7875 22 100.75 22C101.712 22 102.5 22.7875 102.5 23.75V27.25C102.5 28.2125 101.712 29 100.75 29Z" fill="#3457DC"/>
@@ -247,34 +248,21 @@ const Iq = () => {
 
         // 4️⃣ Windows Tuning
         {
-            icon: Settings,
+            // ... داخل تعريف المكون الذي يحتوي على هذه الخاصية ...
+
+            icon: "Settings",
             id: 4,
             layout: "horizontal",
             title: "Windows Tuning",
             text: "Adjusts Windows settings that typically bottleneck performance — from power plans to visual effects.",
             visual: (
-                <div className="relative w-full  flex items-center justify-center">
-                    <svg className="w-full h-full gap-2" viewBox="0 0 120 70">
-                        <rect x="10" y="30" width="19" height="40" rx="5" fill="#151519" opacity="0.7" />
-                        <rect x="30" y="15" width="19" height="55" rx="3" fill="#151519" opacity="0.8" />
-                        <rect x="50" y="35" width="19" height="35" rx="3" fill="#151519" opacity="0.9" />
-                        <path
-                            d="M 5 65 Q 40 10 75 55 T 115 20"
-                            fill="none"
-                            stroke="#3457db"
-                            strokeWidth="1"
-                            className="drop-shadow-glow"
-                        />
-                    </svg>
+                <div className="relative w-full flex items-center justify-center">
 
-
-
-
-
-                    <div className="absolute top-0 left-0 w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center shadow-lg border border-gray-700/50">
-
-
-                    </div>
+                    <img
+                        src={unnamed}
+                        alt="Windows performance tuning visual with bar chart and settings icon"
+                        className="max-w-full h-auto"
+                    />
                 </div>
             ),
         },
@@ -296,7 +284,7 @@ const Iq = () => {
                 {/* TEXT */}
                 <div
                     className={
-                        textOnTop ? "order-1 text-center" : isHorizontal ? "order-2 text-left" : "order-2 text-center"
+                        textOnTop ? "  w-50 order-1 text-center" : isHorizontal ? "order-2 text-left" : "order-2 text-center mt-8 mr-3 w-51"
                     }
                 >
                     <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
@@ -306,13 +294,14 @@ const Iq = () => {
                 {/* VISUAL */}
                 <div
                     className={
-                        textOnTop ? "order-2" : isHorizontal ? "order-1" : "order-1"
+                        textOnTop ? "order-2" : isHorizontal ? "order-1" : "order-1 "
                     }
                 >
                     {feature.visual}
                 </div>
             </div>
         );
+
     };
 
 
@@ -322,27 +311,37 @@ const Iq = () => {
                 What IQ Optimizer <br /> Actually Does.
             </div>
 
-            <div className="mb-8 px-24 justify-center relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4 mx-auto">
+            <div className="mb-8 px-4 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto">
 
-                {/* Vertical Column Separators (Desktop only) */}
-                <div className="hidden lg:block absolute left-[27%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
-                <div className="hidden lg:block absolute left-[50%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
 
                 {/* ✅ Item 1 */}
-                <div className="lg:col-span-2 flex justify-center items-center">
+                <div className="lg:col-span-2 flex flex-col justify-evenly items-center  border-r border-[#1E1D22]">
                     <FeatureItem feature={featuresList[0]} />
                 </div>
 
+
                 {/* ✅ Item 2 */}
-                <div className="lg:col-span-2 flex justify-center items-center">
+                {/* Add a vertical separator line on the right */}
+                <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]">
                     <FeatureItem feature={featuresList[1]} />
+                    <div className={'text-white text-xs z-50 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins'}>40%</span></div>
                 </div>
 
+
                 {/* ✅ Item 3 + Item 4 */}
-                <div className="lg:col-span-4 pl-24 flex flex-col justify-start items-center space-y-8">
-                    <FeatureItem className={'relative left-20'} feature={featuresList[2]} style={{position:'relative',left:'50px'}} />
-                    <div className="h-[1px] w-full bg-[#1E1D22] opacity-60"></div>
+                {/* This group takes up 4 columns (lg:col-span-4) and will NOT have a border-right */}
+                <div className="lg:col-span-4   flex flex-col justify-start items-start space-y-8">
+
+                    <div className="  pl-12 mb-2 border-b border-[#1E1D22]">
+                    <FeatureItem feature={featuresList[2]}  />
+                    </div>
+
+
+
+                    {/* Item 4 */}
+                    <div className="  pl-12 mb-2">
                     <FeatureItem feature={featuresList[3]} />
+                    </div>
                 </div>
 
             </div>

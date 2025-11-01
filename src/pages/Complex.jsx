@@ -114,7 +114,7 @@ const Complex = () => {
 
 
                 {/* Large Blue Shape Left */}
-                <div className="absolute lg:top-50 xl:top-56 xl:left-[-40px] opacity-60">
+                <div className=" top-100 xl:flex absolute lg:top-50 xl:top-56 xl:left-[-40px] opacity-60">
                     <svg width="238" height="332" viewBox="0 0 238 332" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M-310.5 90L65 238.5L237.5 331.5L27.5 223.67L-334 36L-310.5 90Z" fill="#3457DC"/>
                         <path d="M205.5 324.5L-476 0L-84.5 295L-127 244L-36 295L205.5 324.5Z" fill="#3457DC"/>
@@ -122,7 +122,7 @@ const Complex = () => {
                 </div>
 
                 {/* Small Technical Drawing */}
-                <div className="absolute lg:top-10 lg:left-0 xl:top-16 xl:left-20 opacity-70">
+                <div className="hidden xl:flex absolute lg:top-10 lg:left-0 xl:top-16 xl:left-20 opacity-70">
                     <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.499997 50.5L0.499999 7L15.1077 7L25.5 1L33.5 1" stroke="white"/>
                         <rect x="51" width="3" height="13" transform="rotate(90 51 0)" fill="white"/>
@@ -130,7 +130,7 @@ const Complex = () => {
                 </div>
 
                 {/* Large Blue Shape Right */}
-                <div className="absolute lg:top-[-100px] xl:mt-2 xl:top-[-260px] xl:right-0 opacity-60">
+                <div className=" right-0 top-[-200px] xl:flex absolute lg:top-[-100px] xl:mt-2 xl:top-[-260px] xl:right-0 opacity-60">
                     <svg width="131" height="215" viewBox="0 0 131 215" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M341.084 59.4918L159.966 112.373L26.7707 190.704L356.618 23.7969L341.084 59.4918Z" fill="#3457DC"/>
                         <path d="M0 214.5L450.483 0L191.695 195L219.788 161.288L156.661 205.246L0 214.5Z" fill="#3457DC"/>
@@ -138,7 +138,7 @@ const Complex = () => {
                 </div>
 
                 {/* Vertical Text Elements */}
-                <div className="absolute xl:right-20 xl:top-30 transform -translate-y-1/2">
+                <div className=" right-6 top-40 md:flex absolute md:right-20 xl:top-30 transform -translate-y-1/2">
                     <svg width="23" height="177" viewBox="0 0 23 177" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="8" height="8" fill="white"/>
                         <rect x="19" width="4" height="72" fill="white"/>
@@ -148,7 +148,7 @@ const Complex = () => {
                 </div>
 
                 {/* Square with Grid */}
-                <div className="absolute xl:bottom-200 xl:right-20 opacity-80">
+                <div className="hidden xl:flex absolute xl:bottom-200 xl:right-20 opacity-80">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="17" y="16" width="8" height="8" fill="white"/>
                         <mask id="path-2-inside-1_0_1" fill="white">
@@ -159,7 +159,7 @@ const Complex = () => {
                 </div>
 
                 {/* Horizontal Line Bottom */}
-                <div className="absolute xl:bottom-200 xl:right-140 transform -translate-x-1/2">
+                <div className="hidden xl:flex absolute xl:bottom-200 xl:right-140 transform -translate-x-1/2">
                     <svg width="222" height="1" viewBox="0 0 222 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="222" y2="0.5" stroke="white"/>
                     </svg>
@@ -167,7 +167,7 @@ const Complex = () => {
             </div>
 
             <div className="relative z-10 container mx-auto md:px-24 lg:px-26 px-12 py-20">
-                <div className=" flex justify-between gap-32 items-center mb-32">
+                <div className="flex flex-col gap-6 md:flex-row xl:flex-row justify-between xl:gap-32 items-center mb-32">
                     <div className="text-left">
                         <h1 className="text-4xl font-bold text-white mb-16 leading-tight">
                             <span className="text-white">No complex settings,</span>

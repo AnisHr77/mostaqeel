@@ -158,7 +158,7 @@ const Iq = () => {
             title: "Real-Time System Clean-Up",
             text: "Frees up RAM and CPU by disabling unnecessary processes while you play — no manual setup.",
             visual: (
-                <div className="relative mb-8 px-4 py-4 bg-[#151519] rounded-2xl border   shadow-[0_0_50px_-20px_#3457db]">
+                <div className="relative mb-8 px-4 md:px-4 py-4 bg-[#151519] rounded-2xl border   shadow-[0_0_50px_-20px_#3457db]">
                     <div className="absolute -top-8 -right-5 p-3  rounded-full">
                         <svg width="44" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="14" y="12.9531" width="32" height="32" rx="12" fill="#3457DC"/>
@@ -261,7 +261,7 @@ const Iq = () => {
                     <img
                         src={unnamed}
                         alt="Windows performance tuning visual with bar chart and settings icon"
-                        className="max-w-full h-auto"
+                        className="w-52 md:max-w-80 h-auto"
                     />
                 </div>
             ),
@@ -277,14 +277,18 @@ const Iq = () => {
             <div
                 className={
                     isHorizontal
-                        ? "flex flex-row items-center gap-6"
+                        ? "flex flex-col lg:flex-row items-center gap-6"
                         : "flex flex-col items-center gap-6"
                 }
             >
                 {/* TEXT */}
                 <div
                     className={
-                        textOnTop ? "  w-50 order-1 text-center" : isHorizontal ? "order-2 text-left" : "order-2 text-center mt-8 mr-3 w-51"
+                        textOnTop
+                            ? "order-1 text-center"
+                            : isHorizontal
+                                ? "order-1 lg:order-2 text-center lg:text-left"
+                                : "lg:order-2 order-1 text-center mt-8 w-51 "
                     }
                 >
                     <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
@@ -294,12 +298,18 @@ const Iq = () => {
                 {/* VISUAL */}
                 <div
                     className={
-                        textOnTop ? "order-2" : isHorizontal ? "order-1" : "order-1 "
+                        textOnTop
+                            ? "order-2"
+                            : isHorizontal
+                                ? "order-1 lg:order-1"
+                                : "order-1"
                     }
                 >
                     {feature.visual}
                 </div>
             </div>
+
+
         );
 
     };
@@ -307,11 +317,11 @@ const Iq = () => {
 
     return (
         <section className= "">
-            <div className="text-center text-4xl md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug">
+            <div className="text-center text-4xl px-18 md:px-0 md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug">
                 What IQ Optimizer <br /> Actually Does.
             </div>
 
-            <div className="mb-8 px-4 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto">
+            <div className="mb-8 px-4 gap-24 md:gap-0 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto">
 
 
                 {/* ✅ Item 1 */}
@@ -324,23 +334,22 @@ const Iq = () => {
                 {/* Add a vertical separator line on the right */}
                 <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]">
                     <FeatureItem feature={featuresList[1]} />
-                    <div className={'text-white text-xs z-50 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins'}>40%</span></div>
+                    <div className={'text-white text-xs z-50 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
                 </div>
 
 
-                {/* ✅ Item 3 + Item 4 */}
-                {/* This group takes up 4 columns (lg:col-span-4) and will NOT have a border-right */}
-                <div className="lg:col-span-4   flex flex-col justify-start items-start space-y-8">
 
-                    <div className="  pl-12 mb-2 border-b border-[#1E1D22]">
-                    <FeatureItem feature={featuresList[2]}  />
+                <div className="lg:col-span-4 mx-auto  gap-16 md:gap-0  flex flex-col justify-start items-start space-y-8">
+
+                    <div className="   md:pl-12 mb-2  border-b border-[#1E1D22]">
+                        <FeatureItem feature={featuresList[2]}  />
                     </div>
 
 
 
                     {/* Item 4 */}
-                    <div className="  pl-12 mb-2">
-                    <FeatureItem feature={featuresList[3]} />
+                    <div className=" pl-0 md:pl-12 mb-2">
+                        <FeatureItem feature={featuresList[3]} />
                     </div>
                 </div>
 

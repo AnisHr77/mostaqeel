@@ -1,8 +1,20 @@
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, Download } from "lucide-react";
+import { Menu, X, ChevronDown, Download, HelpCircle, Phone, Bug, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
+    const [supportTimeout, setSupportTimeout] = useState(null);
+    const handleSupportEnter = () => {
+        if (supportTimeout) clearTimeout(supportTimeout);
+        setSupportOpen(true);
+    };
+    const handleSupportLeave = () => {
+        const timeout = setTimeout(() => {
+            setSupportOpen(false);
+        }, 200);
+        setSupportTimeout(timeout);
+    };
+
     const [open, setOpen] = useState(false);
     const [langOpen, setLangOpen] = useState(false);
     const [supportOpen, setSupportOpen] = useState(false);
@@ -25,7 +37,6 @@ export default function Navbar() {
                 setSupportOpen(false);
             }
         };
-
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
@@ -38,53 +49,21 @@ export default function Navbar() {
     ];
 
     const supportLinks = [
-        {
-            name: "FAQ",
-            href: "#",
-            description: "Frequently asked questions",
-            icon: "❓"
-        },
-        {
-            name: "Contact Us",
-            href: "#",
-            description: "Get in touch with our team",
-            icon: "📞"
-        },
-        {
-            name: "Report Issue",
-            href: "#",
-            description: "Report bugs or problems",
-            icon: "🐛"
-        },
-        {
-            name: "Documentation",
-            href: "#",
-            description: "User guides and tutorials",
-            icon: "📚"
-        },
+        { name: "FAQ", href: "#", description: "Frequently asked questions", icon: HelpCircle },
+        { name: "Contact Us", href: "#", description: "Get in touch with our team", icon: Phone },
+        { name: "Report Issue", href: "#", description: "Report bugs or problems", icon: Bug },
+        { name: "Documentation", href: "#", description: "User guides and tutorials", icon: BookOpen },
     ];
 
     const languages = [
-        {
-            code: "en",
-            flag: "https://flagcdn.com/w40/us.png",
-            name: "English"
-        },
-        {
-            code: "fr",
-            flag: "https://flagcdn.com/w40/fr.png",
-            name: "Français"
-        },
-        {
-            code: "ar",
-            flag: "https://flagcdn.com/w40/sa.png",
-            name: "العربية"
-        },
+        { code: "en", flag: "https://flagcdn.com/w40/us.png", name: "English" },
+        { code: "fr", flag: "https://flagcdn.com/w40/fr.png", name: "Français" },
+        { code: "ar", flag: "https://flagcdn.com/w40/sa.png", name: "العربية" },
     ];
 
     return (
-        <nav className="w-full fixed top-0 left-0 z-50 bg-[#0c0c14]/95 backdrop-blur-md border-b border-gray-800 font-sans">
-            <div className=" mx-auto px-10 lg:px-18 md:px-12  py-4 flex items-center justify-between">
+        <nav className="w-full  fixed top-0 left-0 z-50 bg-[#0c0c14]/95 backdrop-blur-md border-b border-gray-800 font-sans">
+            <div className="max-w-7xl mx-auto px-10 sm:px-5 lg:px-16 py-4 flex items-center justify-between">
                 {/* Left side: Logo + Links */}
                 <div className="flex items-center space-x-6">
                     <div className="flex items-center space-x-2">
@@ -119,10 +98,11 @@ export default function Navbar() {
                             </defs>
                         </svg>
                     </div>
-                    <span className='w-0.1 h-7 border-1 border-zinc-800 hidden md:flex lg:flex'></span>
+
+                    <span className='w-px h-7 bg-zinc-800 hidden md:flex lg:flex'></span>
 
                     {/* Desktop Nav Links */}
-                    <div className="hidden lg:flex items-center space-x-8 text-sm">
+                    <div className="hidden lg:flex items-center space-x-6 text-sm">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -133,51 +113,33 @@ export default function Navbar() {
                             </a>
                         ))}
 
-                        {/* Support dropdown - Professional Design */}
-                        <div className="relative" ref={supportRef}>
-                            <button
-                                onMouseEnter={() => setSupportOpen(true)}
-                                onClick={() => setSupportOpen(!supportOpen)}
-                                className="flex items-center text-white hover:text-blue-400 transition-colors duration-200 font-medium group"
-                            >
+                        {/* Support dropdown */}
+                        <div
+                            ref={supportRef}
+                            className="relative"
+                            onMouseEnter={handleSupportEnter}
+                            onMouseLeave={handleSupportLeave}
+                        >
+                            <button className="flex items-center space-x-1 text-gray-200 hover:text-white transition-colors duration-200">
                                 Support
-                                <ChevronDown
-                                    size={16}
-                                    className={`ml-1 transition-transform duration-200 ${supportOpen ? 'rotate-180' : ''}`}
-                                />
+                                <ChevronDown className="w-4 h-4" />
                             </button>
 
                             {supportOpen && (
-                                <div
-                                    className="absolute top-8 left-0 w-64 bg-[#1A1A23] border border-gray-700 rounded-xl shadow-2xl py-3 z-50"
-                                    onMouseLeave={() => setSupportOpen(false)}
-                                >
-                                    <div className="px-4 py-2 border-b border-gray-700">
-                                        <h3 className="text-white font-semibold text-sm">Support Center</h3>
-                                        <p className="text-gray-400 text-xs">Get help and support</p>
-                                    </div>
-
-                                    <div className="py-2">
-                                        {supportLinks.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-blue-600/10 transition-all duration-200 group"
-                                                onClick={() => setSupportOpen(false)}
-                                            >
-                                                <span className="text-lg">{item.icon}</span>
-                                                <div className="flex-1">
-                                                    <div className="font-medium text-sm group-hover:text-blue-400">
-                                                        {item.name}
-                                                    </div>
-                                                    <div className="text-xs text-gray-500 group-hover:text-gray-300">
-                                                        {item.description}
-                                                    </div>
-                                                </div>
-                                                <div className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                                            </a>
-                                        ))}
-                                    </div>
+                                <div className="absolute left-0 mt-7 w-xl bg-[#0c0c14] border border-gray-700 rounded-xs shadow-xl z-50 p-2">
+                                    {supportLinks.map((item, index) => (
+                                        <a
+                                            key={index}
+                                            href={item.href}
+                                            className="flex items-start px-3 py-3 hover:bg-gray-800 rounded-md transition-colors duration-200"
+                                        >
+                                            <item.icon className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                                            <div>
+                                                <p className="text-gray-100 font-medium text-sm">{item.name}</p>
+                                                <p className="text-gray-400 text-xs mt-1">{item.description}</p>
+                                            </div>
+                                        </a>
+                                    ))}
                                 </div>
                             )}
                         </div>
@@ -190,7 +152,7 @@ export default function Navbar() {
                     <div className="relative" ref={langRef}>
                         <button
                             onClick={() => setLangOpen(!langOpen)}
-                            className="bg-[#1E1E24] flex items-center gap-2 border border-gray-700 px-3 py-2 rounded-2xl text-white hover:bg-zinc-800 transition-colors duration-200"
+                            className="bg-[#0c0c14] flex items-center gap-2 border border-gray-700 px-3 py-2 rounded-2xl text-white hover:bg-zinc-800 transition-colors duration-200"
                         >
                             <img
                                 src={selectedLang.flag}
@@ -204,7 +166,7 @@ export default function Navbar() {
                         </button>
 
                         {langOpen && (
-                            <div className="absolute right-0 mt-2 w-48 bg-[#1A1A23] border border-gray-700 rounded-2xl shadow-2xl py-2 z-50">
+                            <div className="absolute right-0 mt-2 w-48 bg-[#0c0c14] border border-gray-700 rounded-2xl shadow-2xl py-2 z-50">
                                 <div className="px-3 py-2 border-b border-gray-700">
                                     <h3 className="text-white font-semibold text-sm">Select Language</h3>
                                 </div>
@@ -237,23 +199,24 @@ export default function Navbar() {
                     {/* Discord Button */}
                     <a
                         href="#"
-                        className="p-2 text-white hover:text-blue-400 transition-colors duration-200 hover:bg-white/5 rounded-lg  border-right-white-1 "
+                        className="p-2 text-white hover:text-blue-400 transition-colors duration-200 hover:bg-white/5 rounded-lg"
                         title="Join our Discord"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20.3171 4.36995C18.7871 3.66795 17.1471 3.15095 15.4321 2.85495C15.4011 2.84895 15.3701 2.86395 15.3531 2.89195C15.1421 3.26695 14.9081 3.75695 14.7451 4.14095C12.9001 3.86495 11.0651 3.86495 9.25809 4.14095C9.09509 3.74795 8.85209 3.26695 8.64109 2.89195C8.62409 2.86395 8.59309 2.84995 8.56209 2.85495C6.84809 3.14995 5.20809 3.66695 3.67709 4.36995C3.66409 4.37495 3.65209 4.38495 3.64509 4.39695C0.534087 9.04495 -0.318913 13.5789 0.0990873 18.0569C0.101087 18.0789 0.113087 18.0999 0.130087 18.1129C2.18309 19.6209 4.17109 20.5359 6.12309 21.1419C6.15409 21.1519 6.18709 21.1399 6.20709 21.1139C6.66909 20.4839 7.08009 19.8189 7.43309 19.1199C7.45409 19.0789 7.43409 19.0299 7.39109 19.0139C6.73809 18.7659 6.11709 18.4639 5.51909 18.1219C5.47209 18.0939 5.46809 18.0269 5.51109 17.9939C5.63709 17.8999 5.76309 17.8019 5.88309 17.7029C5.90509 17.6849 5.93509 17.6809 5.96109 17.6929C9.88909 19.4859 14.1411 19.4859 18.0221 17.6929C18.0481 17.6809 18.0781 17.6839 18.1011 17.7029C18.2211 17.8019 18.3471 17.9009 18.4741 17.9949C18.5181 18.0269 18.5151 18.0949 18.4671 18.1229C17.8691 18.4719 17.2481 18.7679 16.5941 19.0139C16.5511 19.0299 16.5331 19.0799 16.5531 19.1209C16.9131 19.8189 17.3251 20.4839 17.7781 21.1139C17.7971 21.1409 17.8311 21.1519 17.8621 21.1429C19.8231 20.5359 21.8121 19.6209 23.8641 18.1139C23.8821 18.1009 23.8931 18.0809 23.8951 18.0589C24.3951 12.8819 23.0571 8.38495 20.3471 4.39895C20.3421 4.38495 20.3301 4.37495 20.3171 4.36995ZM8.02009 15.3309C6.83709 15.3309 5.86309 14.2449 5.86309 12.9119C5.86309 11.5789 6.81809 10.4929 8.02009 10.4929C9.23109 10.4929 10.1961 11.5879 10.1771 12.9119C10.1771 14.2459 9.22109 15.3309 8.02009 15.3309ZM15.9951 15.3309C14.8131 15.3309 13.8381 14.2449 13.8381 12.9119C13.8381 11.5789 14.7931 10.4929 15.9951 10.4929C17.2061 10.4929 18.1711 11.5879 18.1521 12.9119C18.1521 14.2459 17.2061 15.3309 15.9951 15.3309Z" fill="currentColor"/>
                         </svg>
                     </a>
-                    <div className='w-0.1 h-7 border-1 border-zinc-800'></div>
+
+                    <div className='w-px h-7 bg-zinc-800'></div>
 
                     <Button
                         variant="outline"
-                        className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white px-5 py-3 font-medium rounded-xl transition-all duration-200 hover:border-gray-600"
+                        className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white md:text-xs  px-5 py-3 font-medium rounded-xl transition-all duration-200 hover:border-gray-600"
                     >
                         Log in / Sign up
                     </Button>
 
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 font-medium flex items-center gap-2 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 md:text-xs font-medium flex items-center gap-2 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25">
                         Download Free
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.37592 12.7491C8.84037 14.2136 11.2147 14.2136 12.6792 12.7492L15.356 10.0724C15.8525 9.59284 15.8663 8.80151 15.3867 8.30495C14.9071 7.80838 14.1157 7.79463 13.6192 8.27424C13.6087 8.28428 13.5985 8.29456 13.5885 8.30495L11.2693 10.6233L11.2501 1.25C11.2501 0.559648 10.6904 0 10.0001 0C9.30975 0 8.7501 0.559648 8.7501 1.25L8.7676 10.6049L6.46678 8.30413C5.97021 7.82452 5.17889 7.83827 4.69928 8.33483C4.23143 8.81924 4.23143 9.58721 4.69928 10.0716L7.37592 12.7491Z" fill="white"/>
@@ -265,11 +228,45 @@ export default function Navbar() {
                 {/* Mobile Menu Toggle */}
                 <button
                     onClick={() => setOpen(!open)}
-                    className="md:hidden text-white p-2 hover:bg-gray-800 rounded-lg transition"
+                    className="md:hidden text-white p-2 hover:bg-gray-800 rounded-lg transition-colors duration-200"
                 >
                     {open ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
+
+            {/* Mobile Menu */}
+            {open && (
+                <div className="md:hidden bg-[#0c0c14] border-t border-gray-800 px-4 py-4">
+                    <div className="space-y-4">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="block text-white hover:text-blue-400 transition-colors duration-200 font-medium py-2"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
+
+                        {/* Mobile Support Links */}
+                        <div className="pt-2 border-t border-gray-800">
+                            <p className="text-gray-400 font-medium mb-3">Support</p>
+                            <div className="space-y-2">
+                                {supportLinks.map((item, index) => (
+                                    <a
+                                        key={index}
+                                        href={item.href}
+                                        className="flex items-center text-gray-300 hover:text-white transition-colors duration-200 py-2"
+                                    >
+                                        <item.icon className="w-5 h-5 text-blue-400 mr-3" />
+                                        <span>{item.name}</span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }

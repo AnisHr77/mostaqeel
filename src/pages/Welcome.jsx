@@ -66,16 +66,20 @@ No upgrades needed. Just smarter performance in one click.`;
                 </div>
 
                 {/* الوسط */}
-                <div className="relative z-30 -translate-y-10">
+                <div className="relative z-30 rounded-4xl bg-none border-none shadow-[0_-13px_10px_-10px_#0d2787] -translate-y-10">
+                    <div className="relative z-30 rounded-7xl bg-none border-none shadow-[0_-12px_14px_-10px_#0d2787]">
+                        <div className="relative z-30 rounded-2xl bg-none border-none shadow-[0px_-10px_10px_-10px_#4bdffb]">
+
                     {/* طبقة شفافية من الأعلى */}
-                    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/60 via-black/20 to-transparent rounded-t-2xl pointer-events-none"></div>
 
                     {/* الصورة */}
                     <img
                         src={centerImg}
                         alt="Center"
-                        className="relative w-[500px] sm:w-[220px] md:w-[300px] lg:w-[350px] xl:w-[1200px] rounded-2xl object-contain"
+                        className="relative w-[500px] sm:w-[220px] md:w-[300px] lg:w-[350px] xl:w-[1200px] rounded-2xl object-contain shadow-[0_-30px_30px_-24px_rgba(52,87,219,0.7)]"
                     />
+                        </div>
+                </div>
                 </div>
 
 

@@ -159,7 +159,7 @@ const Complex = () => {
                 </div>
 
                 {/* Horizontal Line Bottom */}
-                <div className="hidden xl:flex absolute xl:bottom-28 xl:right-140 transform -translate-x-1/2">
+                <div className="hidden xl:flex absolute md:bottom-22 xl:bottom-28 xl:right-140 transform -translate-x-1/2">
                     <svg width="222" height="1" viewBox="0 0 222 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="222" y2="0.5" stroke="white"/>
                     </svg>
@@ -188,7 +188,7 @@ const Complex = () => {
                     <img
                         src={MOCKUP_IMAGE_URL}
                         alt="Mockup"
-                        className="w-[55%] h-auto rounded-xl shadow-2xl mt-8"
+                        className="w-['500px'] h-auto rounded-xl shadow-2xl mt-8"
                     />
                 </div>
 

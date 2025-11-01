@@ -276,7 +276,6 @@ const Iq = () => {
     const FeatureItem = ({ feature }) => (
         <div className="flex flex-col md:flex-col items-center gap-6 ">
             <div className="order-2 md:order-1">{feature.visual}</div>
-            <div className="hidden md:block w-px h-24 bg-gray-700/50 order-2"></div>
             <div className="text-left md:text-right flex-1 order-3">
                 <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
                 <p className="text-gray-400 w-full text-sm leading-relaxed">{feature.text}</p>
@@ -286,26 +285,41 @@ const Iq = () => {
 
     return (
         <section className= "">
-            <h2 className="text-center text-4xl md:text-6xl font-extrabold text-white mb-20 leading-snug">
+            <div className="text-center text-4xl md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug">
                 What IQ Optimizer <br /> Actually Does.
-            </h2>
+            </div>
 
-            <div className="flex flex-col lg:flex-row max-w-6xl mx-auto gap-20">
-                {/* 1️⃣ */}
-                <div className="flex-1 flex justify-start items-start">
+            <div className="mb-8 px-24  justify-center relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16  mx-auto">
+
+                {/* Vertical Column Separators (Desktop only) */}
+                <div className="hidden lg:block absolute left-[25%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
+                <div className="hidden lg:block absolute left-[50%] top-0 h-full w-[1px] bg-[#1E1D22]"></div>
+
+
+                {/* ✅ 1️⃣ Item */}
+                <div className="flex justify-center items-center">
                     <FeatureItem feature={featuresList[0]} />
                 </div>
 
-                {/* 2️⃣ */}
-                <div className="flex-1 flex justify-center items-start">
+                {/* ✅ 2️⃣ Item */}
+                <div className="flex justify-center items-center">
                     <FeatureItem feature={featuresList[1]} />
                 </div>
 
-                {/* 3️⃣ + 4️⃣ */}
-                <div className="flex-1 flex flex-col justify-between items-end space-y-16">
+                {/* ✅ 3️⃣ + 4️⃣ stacked — span 2 cols */}
+                <div className="lg:col-span-2 flex flex-col justify-start items-center space-y-2">
+
+                    {/* Item 3 */}
                     <FeatureItem feature={featuresList[2]} />
+
+                    {/* Horizontal Separator */}
+                    <div className="h-[1px] w-full bg-[#1E1D22] opacity-60"></div>
+
+                    {/* Item 4 */}
                     <FeatureItem feature={featuresList[3]} />
+
                 </div>
+
             </div>
         </section>
     );

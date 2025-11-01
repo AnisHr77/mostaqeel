@@ -114,7 +114,7 @@ const Complex = () => {
 
 
                 {/* Large Blue Shape Left */}
-                <div className=" top-100 xl:flex absolute lg:top-50 xl:top-56 xl:left-[-40px] opacity-60">
+                <div className=" top-100 xl:flex absolute lg:top-50 xl:top-46 xl:left-[-40px] opacity-60">
                     <svg width="238" height="332" viewBox="0 0 238 332" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M-310.5 90L65 238.5L237.5 331.5L27.5 223.67L-334 36L-310.5 90Z" fill="#3457DC"/>
                         <path d="M205.5 324.5L-476 0L-84.5 295L-127 244L-36 295L205.5 324.5Z" fill="#3457DC"/>
@@ -122,7 +122,7 @@ const Complex = () => {
                 </div>
 
                 {/* Small Technical Drawing */}
-                <div className="hidden xl:flex absolute lg:top-10 lg:left-0 xl:top-16 xl:left-20 opacity-70">
+                <div className="hidden xl:flex absolute lg:top-10 lg:left-0 xl:top-7 xl:left-17 opacity-70">
                     <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.499997 50.5L0.499999 7L15.1077 7L25.5 1L33.5 1" stroke="white"/>
                         <rect x="51" width="3" height="13" transform="rotate(90 51 0)" fill="white"/>
@@ -138,7 +138,7 @@ const Complex = () => {
                 </div>
 
                 {/* Vertical Text Elements */}
-                <div className=" right-6 top-40 md:flex absolute md:right-20 xl:top-30 transform -translate-y-1/2">
+                <div className=" right-6 top-40 md:flex absolute md:right-17 xl:top-30 transform -translate-y-1/2">
                     <svg width="23" height="177" viewBox="0 0 23 177" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="8" height="8" fill="white"/>
                         <rect x="19" width="4" height="72" fill="white"/>
@@ -148,7 +148,7 @@ const Complex = () => {
                 </div>
 
                 {/* Square with Grid */}
-                <div className="hidden xl:flex absolute xl:bottom-54 xl:right-20 opacity-80">
+                <div className="hidden xl:flex absolute xl:bottom-28 xl:right-17 opacity-80">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="17" y="16" width="8" height="8" fill="white"/>
                         <mask id="path-2-inside-1_0_1" fill="white">
@@ -159,7 +159,7 @@ const Complex = () => {
                 </div>
 
                 {/* Horizontal Line Bottom */}
-                <div className="hidden xl:flex absolute xl:bottom-54 xl:right-140 transform -translate-x-1/2">
+                <div className="hidden xl:flex absolute xl:bottom-28 xl:right-140 transform -translate-x-1/2">
                     <svg width="222" height="1" viewBox="0 0 222 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="222" y2="0.5" stroke="white"/>
                     </svg>
@@ -169,7 +169,7 @@ const Complex = () => {
             <div className="relative z-10 container mx-auto md:px-24 lg:px-26 px-12 py-20">
                 <div className="flex flex-col gap-6 md:flex-row xl:flex-row justify-between xl:gap-32 items-center mb-32">
                     <div className="text-left">
-                        <h1 className="text-4xl font-bold text-white mb-16 leading-tight">
+                        <h1 className="text-4xl font-bold text-white mb-16 leading-tight -mt-10">
                             <span className="text-white">No complex settings,</span>
                             <br />
                             <span className="text-white">No confusing menus,</span>
@@ -180,18 +180,16 @@ const Complex = () => {
                         </h1>
                         <a
                             href="#"
-                            className="inline-flex items-center justify-center px-8 py-3.5 gap-4 text-lg font-semibold text-white bg-blue-600 rounded-[16px] hover:bg-blue-700 transition"
+                            className="inline-flex items-center justify-center px-4 py-4.5 gap-4 text-sm  font-medium text-white bg-blue-600 rounded-[16px] hover:bg-blue-700 transition"
                         >
                             How it works ? <ExternalLink size={18} />
                         </a>
                     </div>
-                    <div>
-                        <img
-                            src={MOCKUP_IMAGE_URL}
-                            alt="IQ Optimizer Mockup"
-                            className=" w-160 h-auto rounded-xl shadow-2xl"
-                        />
-                    </div>
+                    <img
+                        src={MOCKUP_IMAGE_URL}
+                        alt="Mockup"
+                        className="w-[55%] h-auto rounded-xl shadow-2xl mt-8"
+                    />
                 </div>
 
                 {/* Features Section - مطابق للصورة تمامًا */}

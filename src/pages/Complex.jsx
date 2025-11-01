@@ -148,7 +148,7 @@ const Complex = () => {
                 </div>
 
                 {/* Square with Grid */}
-                <div className="hidden xl:flex absolute xl:bottom-200 xl:right-20 opacity-80">
+                <div className="hidden xl:flex absolute xl:bottom-54 xl:right-20 opacity-80">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="17" y="16" width="8" height="8" fill="white"/>
                         <mask id="path-2-inside-1_0_1" fill="white">
@@ -159,7 +159,7 @@ const Complex = () => {
                 </div>
 
                 {/* Horizontal Line Bottom */}
-                <div className="hidden xl:flex absolute xl:bottom-200 xl:right-140 transform -translate-x-1/2">
+                <div className="hidden xl:flex absolute xl:bottom-54 xl:right-140 transform -translate-x-1/2">
                     <svg width="222" height="1" viewBox="0 0 222 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="222" y2="0.5" stroke="white"/>
                     </svg>
@@ -195,35 +195,7 @@ const Complex = () => {
                 </div>
 
                 {/* Features Section - مطابق للصورة تمامًا */}
-                <h2 className="text-center text-4xl md:text-6xl font-bold text-white mt-70 mb-16 leading-snug">
-                    What IQ Optimizer <br /> Actually Does.
-                </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
-                    {featuresList.map((feature, idx) => (
-                        <div
-                            key={idx}
-                            className={`flex ${idx % 2 === 0 ? "justify-start" : "justify-end"}`}
-                        >
-                            <div className="flex flex-col md:flex-row items-center gap-6 max-w-md">
-                                {/* Visual */}
-                                <div className={idx >= 2 ? "order-2 md:order-1" : ""}>
-                                    {feature.visual}
-                                </div>
-
-                                {/* Text */}
-                                <div className={`text-left ${idx >= 2 ? "md:text-left" : "md:text-right"} flex-1`}>
-                                    <h4 className="text-lg font-extrabold text-white mb-2">
-                                        {feature.title}
-                                    </h4>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        {feature.text}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </div>
 
             <style jsx>{`

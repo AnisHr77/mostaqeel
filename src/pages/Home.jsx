@@ -3,6 +3,7 @@ import { FaWindows } from "react-icons/fa";
 import image1 from "../assets/image1.png";
 import Welcome from "./Welcome";
 import Complex from "@/pages/Complex.jsx";
+import Iq from "@/pages/Iq.jsx";
 
 export default function Home() {
     return (
@@ -102,6 +103,7 @@ export default function Home() {
             </section>
             <Welcome/>
             <Complex/>
+            <Iq/>
         </div>
     );
 }

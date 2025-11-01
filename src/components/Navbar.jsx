@@ -236,7 +236,7 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {open && (
-                <div className="md:hidden bg-[#0c0c14] border-t border-gray-800 px-4 py-4">
+                <div className="md:hidden bg-[#0c0c14] min-h-screen border-t border-gray-800 px-8 py-4">
                     <div className="space-y-4">
                         {navLinks.map((link) => (
                             <a

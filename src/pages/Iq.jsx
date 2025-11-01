@@ -30,7 +30,7 @@ const Iq = () => {
                     {/* Main WiFi card */}
                     <div className="relative w-50 h-38 bg-[#151519] rounded-xl border  flex items-center justify-center overflow-hidden shadow-[0_0_50px_-20px_#3457db] ">
                         <div className="relative">
-                            <svg className="relative top-20 left-14 z-50" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="relative top-20 left-14 z-10" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="40" height="40" rx="20" fill="#3457DC"/>
                                 <g clipPath="url(#clip0_657_258)">
                                     <path d="M18 26.9998C18 25.8998 18.9 24.9998 20 24.9998C21.1 24.9998 22 25.8998 22 26.9998C22 28.0998 21.1 28.9998 20 28.9998C18.9 28.9998 18 28.0998 18 26.9998ZM31.68 17.5398C32.09 17.1598 32.11 16.5298 31.73 16.1298C28.71 12.8798 24.43 11.0098 20 11.0098C15.57 11.0098 11.29 12.8698 8.26998 16.1198C7.88998 16.5298 7.91998 17.1598 8.31998 17.5298C8.71998 17.9098 9.35998 17.8798 9.72998 17.4798C12.37 14.6298 16.11 12.9998 20 12.9998C23.89 12.9998 27.62 14.6298 30.27 17.4798C30.47 17.6898 30.73 17.7998 31 17.7998C31.24 17.7998 31.49 17.7098 31.68 17.5298V17.5398ZM26.67 22.3498C27.08 21.9698 27.1 21.3398 26.72 20.9398C24.99 19.0698 22.54 17.9998 20 17.9998C17.46 17.9998 15.01 19.0698 13.28 20.9398C12.9 21.3398 12.93 21.9798 13.33 22.3498C13.73 22.7298 14.37 22.6998 14.74 22.2998C16.09 20.8398 18.01 20.0098 20 20.0098C21.99 20.0098 23.9 20.8498 25.26 22.2998C25.46 22.5098 25.72 22.6198 25.99 22.6198C26.23 22.6198 26.48 22.5298 26.67 22.3498Z" fill="white"/>
@@ -334,7 +334,7 @@ const Iq = () => {
                 {/* Add a vertical separator line on the right */}
                 <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]">
                     <FeatureItem feature={featuresList[1]} />
-                    <div className={'text-white text-xs z-50 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
+                    <div className={'text-white text-xs z-10 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
                 </div>
 
 

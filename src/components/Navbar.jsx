@@ -27,7 +27,6 @@ export default function Navbar() {
     const langRef = useRef(null);
     const supportRef = useRef(null);
 
-    // Close dropdowns when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (langRef.current && !langRef.current.contains(event.target)) {
@@ -46,6 +45,7 @@ export default function Navbar() {
         { name: "Pricings", href: "#" },
         { name: "Games library", href: "#" },
         { name: "Giveaways", href: "#" },
+        { name: "Log in/SinUp", href: "#" },
     ];
 
     const supportLinks = [
@@ -101,7 +101,6 @@ export default function Navbar() {
 
                     <span className='w-px h-7 bg-zinc-800 hidden md:flex lg:flex'></span>
 
-                    {/* Desktop Nav Links */}
                     <div className="hidden lg:flex items-center space-x-6 text-sm">
                         {navLinks.map((link) => (
                             <a
@@ -113,7 +112,6 @@ export default function Navbar() {
                             </a>
                         ))}
 
-                        {/* Support dropdown */}
                         <div
                             ref={supportRef}
                             className="relative"
@@ -146,9 +144,7 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Right side: Language + Buttons */}
                 <div className="hidden md:flex items-center space-x-4">
-                    {/* Language Dropdown */}
                     <div className="relative" ref={langRef}>
                         <button
                             onClick={() => setLangOpen(!langOpen)}
@@ -196,7 +192,6 @@ export default function Navbar() {
                         )}
                     </div>
 
-                    {/* Discord Button */}
                     <a
                         href="#"
                         className="p-2 text-white hover:text-blue-400 transition-colors duration-200 hover:bg-white/5 rounded-lg"
@@ -225,7 +220,6 @@ export default function Navbar() {
                     </Button>
                 </div>
 
-                {/* Mobile Menu Toggle */}
                 <button
                     onClick={() => setOpen(!open)}
                     className="md:hidden text-white p-2 hover:bg-gray-800 rounded-lg transition-colors duration-200"
@@ -234,7 +228,6 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             {open && (
                 <div className="md:hidden bg-[#0c0c14] min-h-screen border-t border-gray-800 px-8 py-4">
                     <div className="space-y-4">
@@ -248,7 +241,6 @@ export default function Navbar() {
                             </a>
                         ))}
 
-                        {/* Mobile Support Links */}
                         <div className="pt-2 border-t border-gray-800">
                             <p className="text-gray-400 font-medium mb-3">Support</p>
                             <div className="space-y-2">

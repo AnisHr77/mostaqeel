@@ -2,8 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import centerImg from "../assets/center.png";
 import leftImg from "../assets/left.png";
 import rightImg from "../assets/right.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Welcome = () => {
+
+
     const fullText = `Your PC might be slow not from weak hardware, but from how Windows handles it.
 IQ Optimizer clears what holds it back, boosts responsiveness, and makes everything run smoother, especially in games.
 No upgrades needed. Just smarter performance in one click.`;
@@ -13,7 +17,31 @@ No upgrades needed. Just smarter performance in one click.`;
     const frameRef = useRef(null);
     const textRef = useRef(null);
 
-    // ✅ يبدأ الكتابة فقط عندما يظهر النص على الشاشة
+    useEffect(() => {
+        AOS.init({
+            duration: 1600,
+            once: true,
+        });
+    }, []);
+
+    useEffect(() => {
+        const el = textRef.current;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    el.querySelectorAll(".animate-line").forEach(line => {
+                        line.classList.add("line-draw");
+                    });
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        if (el) observer.observe(el);
+        return () => el && observer.unobserve(el);
+    }, []);
+
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -25,11 +53,10 @@ No upgrades needed. Just smarter performance in one click.`;
         return () => observer.disconnect();
     }, []);
 
-    // ✅ حركة الكتابة السلسة (أبطأ قليلاً)
     useEffect(() => {
         if (!startTyping) return;
         let startTime;
-        const speed = 40; // أبطأ قليلاً لتبدو واقعية
+        const speed = 40;
         const step = (timestamp) => {
             if (!startTime) startTime = timestamp;
             const progress = timestamp - startTime;
@@ -53,10 +80,8 @@ No upgrades needed. Just smarter performance in one click.`;
     return (
         <section className="  px-6 relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden text-white font-[Poppins]">
 
-            {/* الصور */}
             <div className="relative flex items-end justify-center gap-4 sm:gap-6 md:gap-10 w-full max-w-7xl z-20 mt-24 px-4">
-                {/* يسار */}
-                <div className="relative z-10 translate-y-4">
+                <div className="relative z-10 translate-y-4" data-aos="fade-left">
                     <img
                         src={leftImg}
                         alt="Left"
@@ -65,14 +90,11 @@ No upgrades needed. Just smarter performance in one click.`;
                     />
                 </div>
 
-                {/* الوسط */}
-                <div className="relative z-30 rounded-4xl bg-none border-none shadow-[0_-13px_10px_-10px_#0d2787] -translate-y-10">
+                <div className="relative z-30 rounded-4xl bg-none border-none shadow-[0_-13px_10px_-10px_#0d2787] -translate-y-10" data-aos="fade-up">
                     <div className="relative z-30 rounded-7xl bg-none border-none shadow-[0_-12px_14px_-10px_#0d2787]">
                         <div className="relative z-30 rounded-2xl bg-none border-none shadow-[0px_-10px_10px_-10px_#4bdffb]">
 
-                    {/* طبقة شفافية من الأعلى */}
 
-                    {/* الصورة */}
                     <img
                         src={centerImg}
                         alt="Center"
@@ -83,8 +105,7 @@ No upgrades needed. Just smarter performance in one click.`;
                 </div>
 
 
-                {/* يمين */}
-                <div className="relative z-10 translate-y-6">
+                <div className="relative z-10 translate-y-6" data-aos="fade-right">
                     <img
                         src={rightImg}
                         alt="Right"
@@ -94,7 +115,6 @@ No upgrades needed. Just smarter performance in one click.`;
                 </div>
             </div>
 
-            {/* النص */}
             <div ref={textRef} className="relative  mt-2 text-center max-w-2xl px-6">
                 <svg
                     className="relative top-[-250px] left-[5px] -z-10 md:top-[-150px] md:left-[0px]"
@@ -104,8 +124,22 @@ No upgrades needed. Just smarter performance in one click.`;
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <line x1="10.5" y1="0" x2="10.5" y2="303" stroke="white" />
-                    <line x1="10.5" y1="59" x2="10.5" y2="298" stroke="#3457DC" />
+                    <line
+                        x1="10.5"
+                        y1="0"
+                        x2="10.5"
+                        y2="303"
+                        stroke="white"
+                        className="animate-line"
+                    />
+                    <line
+                        x1="10.5"
+                        y1="59"
+                        x2="10.5"
+                        y2="298"
+                        stroke="#3457DC"
+                        className="animate-line"
+                    />
                     <path d="M13.9059 317.086H8.46094V311.641H13.9059V317.086Z" fill="white" />
                     <path d="M22.5928 309.165H21.5578V303.99H16.3828V303H22.5928V309.165Z" fill="white" />
                     <path d="M1.035 309.165H0V303H6.21V303.99H1.035V309.165Z" fill="white" />

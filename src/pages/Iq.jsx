@@ -14,11 +14,19 @@ import {
     Lock,
     AppWindow,
 } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import unnamed from "../assets/unnamed.png";
+import {useEffect} from "react";
 
 const Iq = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+    }, []);
     const featuresList = [
-        // 1️⃣ Network Optimizer
         {
             icon: Wifi,
             id: 1,
@@ -27,7 +35,6 @@ const Iq = () => {
             text: "Prioritizes gaming traffic and stabilizes your connection for lower ping and fewer lag spikes.",
             visual: (
                 <div className="relative mb-2 left-8 w-70 h-24 flex items-center justify-center ">
-                    {/* Main WiFi card */}
                     <div className="relative w-50 h-38 bg-[#151519] rounded-xl border  flex items-center justify-center overflow-hidden shadow-[0_0_50px_-20px_#3457db] ">
                         <div className="relative">
                             <svg className="relative top-20 left-14 z-10" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +76,6 @@ const Iq = () => {
                         </div>
                     </div>
 
-                    {/* Left small chart card */}
                     <div className="absolute -top-2 -left-2 w-10 h-10 bg-[#3457db] rounded-lg flex items-center justify-center shadow-lg border border-blue-400/30">
                         <svg width="18" height="18" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect y="2" width="4" height="17" rx="2" fill="white"/>
@@ -79,7 +85,6 @@ const Iq = () => {
 
                     </div>
 
-                    {/* Ping tag */}
                     <svg className={'relative -left-10 top-8'} width="71" height="41" viewBox="0 0 71 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="70" height="40" rx="11.5" fill="#151519"/>
                         <rect x="0.5" y="0.5" width="70" height="40" rx="11.5" stroke="url(#paint0_radial_657_254)"/>
@@ -97,7 +102,6 @@ const Iq = () => {
             ),
         },
 
-        // 2️⃣ FPS Boost Engine
         {
             icon: Pause,
             id: 2,
@@ -150,7 +154,6 @@ const Iq = () => {
             ),
         },
 
-        // 3️⃣ Real-Time System Clean-Up
         {
             icon: Cpu,
             id: 3,
@@ -246,9 +249,7 @@ const Iq = () => {
             ),
         },
 
-        // 4️⃣ Windows Tuning
         {
-            // ... داخل تعريف المكون الذي يحتوي على هذه الخاصية ...
 
             icon: "Settings",
             id: 4,
@@ -268,7 +269,6 @@ const Iq = () => {
         },
     ];
 
-    // Feature Item Component
     const FeatureItem = ({ feature }) => {
         const isHorizontal = feature.layout === "horizontal";
         const textOnTop = feature.layout === "vertical-text-top";
@@ -281,7 +281,6 @@ const Iq = () => {
                         : "flex flex-col items-center gap-6"
                 }
             >
-                {/* TEXT */}
                 <div
                     className={
                         textOnTop
@@ -295,7 +294,6 @@ const Iq = () => {
                     <p className="text-gray-400 w-full text-sm leading-relaxed">{feature.text}</p>
                 </div>
 
-                {/* VISUAL */}
                 <div
                     className={
                         textOnTop
@@ -316,30 +314,28 @@ const Iq = () => {
 
 
     return (
-        <section className= "">
-            <div className="text-center text-4xl px-18 md:px-0 md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug">
+        <section className= "mb-12">
+            <div className="text-center text-4xl px-18 md:px-0 md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug" >
                 What IQ Optimizer <br /> Actually Does.
             </div>
 
-            <div className="mb-8 px-4 gap-24 md:gap-0 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto">
+            <div className="mb-8 px-4 gap-24 md:gap-0 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto" data-aos="fade-up">
 
 
-                {/* ✅ Item 1 */}
-                <div className="lg:col-span-2 flex flex-col justify-evenly items-center  border-r border-[#1E1D22]">
+                <div className="lg:col-span-2 flex flex-col justify-evenly items-center  border-r border-[#1E1D22]" data-aos="fade-up"  >
                     <FeatureItem feature={featuresList[0]} />
                 </div>
 
 
-                {/* ✅ Item 2 */}
-                {/* Add a vertical separator line on the right */}
-                <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]">
+
+                <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]" data-aos="fade-up" >
                     <FeatureItem feature={featuresList[1]} />
                     <div className={'text-white text-xs z-10 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
                 </div>
 
 
 
-                <div className="lg:col-span-4 mx-auto  gap-16 md:gap-0  flex flex-col justify-start items-start space-y-8">
+                <div className="lg:col-span-4 mx-auto  gap-16 md:gap-0  flex flex-col justify-start items-start space-y-8" data-aos="fade-up" >
 
                     <div className="   md:pl-12 mb-2  border-b border-[#1E1D22]">
                         <FeatureItem feature={featuresList[2]}  />
@@ -347,8 +343,8 @@ const Iq = () => {
 
 
 
-                    {/* Item 4 */}
-                    <div className=" pl-0 md:pl-12 mb-2">
+
+                    <div className=" pl-0 md:pl-12 mb-2" data-aos="fade-up" >
                         <FeatureItem feature={featuresList[3]} />
                     </div>
                 </div>

@@ -4,15 +4,23 @@ import image1 from "../assets/image1.png";
 import Welcome from "./Welcome";
 import Complex from "@/pages/Complex.jsx";
 import Iq from "@/pages/Iq.jsx";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function Home() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            once: true,
+        });
+    }, []);
     return (
         <div >
-            {/* القسم الأول */}
             <section className="  mt-6 min-h-screen text-white flex flex-col items-center justify-center px-12 md:px-36 pt-24 gilroy-font">
-                <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
-                    {/* اليسار */}
-                    <div className="text-left md:w-1/3">
+                <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl" >
+
+                    <div className="text-left md:w-1/3" data-aos="fade-left">
                         <h3 className="mb-2 flex flex-col text-white leading-tight gilroy-bold font-bold text-5xl md:text-6xl">
                             <span className="flex items-center">
                                 LAG ?
@@ -43,7 +51,7 @@ export default function Home() {
                     </div>
 
                     {/* الوسط */}
-                    <div className="md:w-1/3 flex justify-center ">
+                    <div className="md:w-1/3 flex justify-center " data-aos="fade-down">
                         <div className="rounded-xl overflow-hidden">
                             <img
                                 src={image1}
@@ -54,7 +62,7 @@ export default function Home() {
                     </div>
 
                     {/* اليمين */}
-                    <div className="w-1/3 text-center lg:text-right">
+                    <div className="w-1/3 text-center lg:text-right" data-aos="fade-right">
                         <h3 className="mb-2 flex flex-col text-white leading-tight gilroy-bold  font-bold  text-5xl md:text-6xl">
                             <span className="flex items-center justify-center md:justify-center">
                                 OR LOW
@@ -86,8 +94,8 @@ export default function Home() {
                 </p>
 
                 {/* الأزرار */}
-                <div className="flex flex-col md:flex-row gap-6">
-                    <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-10 py-3 rounded-xl font-medium transition gilroy-medium">
+                <div className="flex flex-col md:flex-row gap-6" >
+                    <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-10 py-3 rounded-xl font-medium transition gilroy-medium" >
                         Download Free
                         <Download size={28} />
                     </button>

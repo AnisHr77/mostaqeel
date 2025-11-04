@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* === Gilroy === */
 @font-face {
     font-family: 'Gilroy';
     src: url('/fonts/Gilroy-Light.ttf') format('truetype');
@@ -38,7 +37,6 @@
     font-display: swap;
 }
 
-/* === Poppins === */
 @font-face {
     font-family: 'Poppins';
     src: url('/fonts/Poppins-Thin.ttf') format('truetype');
@@ -94,7 +92,6 @@
     font-style: normal;
 }
 
-/* === Plus Jakarta Sans === */
 @font-face {
     font-family: 'Plus Jakarta Sans';
     src: url('/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
@@ -110,7 +107,6 @@
     font-display: swap;
 }
 
-/* === Playfair Display === */
 @font-face {
     font-family: 'Playfair Display';
     src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
@@ -126,7 +122,6 @@
     font-display: swap;
 }
 
-/* === Font Utility Classes === */
 body {
     font-family: 'Gilroy', 'Poppins', sans-serif;
 }
@@ -147,7 +142,6 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* === Backgrounds === */
 body {
     background: linear-gradient(
             to bottom,
@@ -172,6 +166,22 @@ body {
         box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
     }
 }
+
+.line-draw {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: draw-line 2s ease forwards;
+}
+
+@keyframes draw-line {
+    from {
+        stroke-dashoffset: 400;
+    }
+    to {
+        stroke-dashoffset: 100;
+    }
+}
+
 
 
 

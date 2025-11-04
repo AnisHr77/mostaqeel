@@ -322,20 +322,20 @@ const Iq = () => {
             <div className="mb-8 px-4 gap-24 md:gap-0 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto" data-aos="fade-up">
 
 
-                <div className="lg:col-span-2 flex flex-col justify-evenly items-center  border-r border-[#1E1D22]" data-aos="fade-up"  >
+                <div className="lg:col-span-2 flex flex-col justify-evenly items-center  border-r border-[#1E1D22]"  >
                     <FeatureItem feature={featuresList[0]} />
                 </div>
 
 
 
-                <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]" data-aos="fade-up" >
+                <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]"  >
                     <FeatureItem feature={featuresList[1]} />
                     <div className={'text-white text-xs z-10 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
                 </div>
 
 
 
-                <div className="lg:col-span-4 mx-auto  gap-16 md:gap-0  flex flex-col justify-start items-start space-y-8" data-aos="fade-up" >
+                <div className="lg:col-span-4 mx-auto  gap-16 md:gap-0  flex flex-col justify-start items-start space-y-8"  >
 
                     <div className="   md:pl-12 mb-2  border-b border-[#1E1D22]">
                         <FeatureItem feature={featuresList[2]}  />
@@ -344,7 +344,7 @@ const Iq = () => {
 
 
 
-                    <div className=" pl-0 md:pl-12 mb-2" data-aos="fade-up" >
+                    <div className=" pl-0 md:pl-12 mb-2" >
                         <FeatureItem feature={featuresList[3]} />
                     </div>
                 </div>

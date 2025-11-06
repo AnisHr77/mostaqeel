@@ -1,0 +1,83 @@
+{
+  "navbar": {
+    "howItWorks": "How it works",
+    "pricings": "Pricings",
+    "gamesLibrary": "Games library",
+    "giveaways": "Giveaways",
+    "loginSignup": "Log in/SignUp",
+    "support": "Support",
+    "selectLanguage": "Select Language",
+    "downloadFree": "Download Free"
+  },
+  "support": {
+    "faq": "FAQ",
+    "faqDescription": "Frequently asked questions",
+    "contactUs": "Contact Us",
+    "contactDescription": "Get in touch with our team",
+    "reportIssue": "Report Issue",
+    "reportDescription": "Report bugs or problems",
+    "documentation": "Documentation",
+    "docsDescription": "User guides and tutorials"
+  },
+  "home": {
+    "title": "Welcome to Our Platform",
+    "subtitle": "The best gaming experience"
+  },
+  "buttons": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "download": "Download",
+    "learnMore": "Learn More"
+  },
+  "No_complex_settings,": "No complex settings,",
+  "No_confusing_menus,": "No confusing menus,",
+  "How_it_works": "How it works?",
+  "Just_Results.": "Just Results.",
+
+  "hero": {
+    "lag": "LAG ?",
+    "stutter": "STUTTER ?",
+    "orLowFPS": "OR LOW",
+    "fps": "FPS",
+    "description": "Built for gamers who want smoother, faster gameplay. IQ Optimizer boosts FPS and fine-tunes your system, no upgrades needed.",
+    "downloadFree": "Download Free",
+    "comparePlans": "Compare Plans",
+    "supportsWindows": "Supports Windows 10 and Higher"
+  },
+
+  "welcome": {
+    "subtitle": "Get the Best Out of Your Setup",
+    "description": "Your PC might be slow not from weak hardware, but from how Windows handles it. IQ Optimizer clears what holds it back, boosts responsiveness, and makes everything run smoother, especially in games. No upgrades needed. Just smarter performance in one click."
+  },
+
+
+  "iq": {
+    "title": "What IQ Optimizer Actually Does.",
+    "features": {
+      "networkOptimizer": {
+        "title": "Network Optimizer",
+        "description": "Prioritizes gaming traffic and stabilizes your connection for lower ping and fewer lag spikes."
+      },
+      "fpsBoost": {
+        "title": "FPS Boost Engine",
+        "description": "Maximizes frame rates by reallocating system resources and stopping non-essential background tasks.",
+        "improvement": "Up to"
+      },
+      "systemCleanup": {
+        "title": "Real-Time System Clean-Up",
+        "description": "Frees up RAM and CPU by disabling unnecessary processes while you play — no manual setup.",
+        "time": "12:45 PM",
+        "status1": "// Freeing RAM & CPU...",
+        "status2": "Unnecessary processes disabled"
+      },
+      "windowsTuning": {
+        "title": "Windows Tuning",
+        "description": "Adjusts Windows settings that typically bottleneck performance — from power plans to visual effects."
+      }
+    }
+  }
+
+
+
+
+}

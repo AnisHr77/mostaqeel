@@ -1,0 +1,84 @@
+{
+  "navbar": {
+    "howItWorks": "Comment ça marche",
+    "pricings": "Tarifs",
+    "gamesLibrary": "Bib de jeux",
+    "giveaways": "Cadeaux",
+    "loginSignup": "Connexion/Inscription",
+    "support": "Support",
+    "selectLanguage": "Choisir la langue",
+    "downloadFree": "Télécharger Gratuitement"
+  },
+  "support": {
+    "faq": "FAQ",
+    "faqDescription": "Questions fréquemment posées",
+    "contactUs": "Contactez-nous",
+    "contactDescription": "Contactez notre équipe",
+    "reportIssue": "Signaler un problème",
+    "reportDescription": "Signaler des bugs ou problèmes",
+    "documentation": "Documentation",
+    "docsDescription": "Guides utilisateur et tutoriels"
+  },
+  "home": {
+    "title": "Bienvenue sur notre plateforme",
+    "subtitle": "La meilleure expérience de jeu"
+  },
+  "buttons": {
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "download": "Télécharger",
+    "learnMore": "En savoir plus"
+  },
+
+  "No_complex_settings,": "Pas de paramètres complexes",
+  "No_confusing_menus,": "Pas de menus déroutants",
+  "How_it_works": "Comment ça marche ?",
+  "Just_Results.": "il'ya que les Resultats",
+
+
+  "hero": {
+    "lag": "LAG?",
+    "stutter": "COUPAGE?",
+    "orLowFPS": "OU FAIBLE",
+    "fps": "FPS",
+    "description": "Conçu pour les joueurs qui veulent un gameplay plus fluide et plus rapide. IQ Optimizer augmente les FPS et règle finement votre système, sans mise à niveau nécessaire.",
+    "downloadFree": "Télécharger Gratuitement",
+    "comparePlans": "Comparer les Plans",
+    "supportsWindows": "Prend en charge Windows 10 et supérieur"
+  },
+
+  "welcome": {
+    "subtitle": "Tirez le Meilleur Parti de Votre Configuration",
+    "description": "Votre PC peut être lent non pas à cause d'un matériel faible, mais à cause de la façon dont Windows le gère. IQ Optimizer supprime ce qui le retient, améliore la réactivité et rend tout plus fluide, surtout dans les jeux. Aucune mise à niveau nécessaire. Juste des performances plus intelligentes en un clic."
+  },
+
+
+  "iq": {
+    "title": "Ce que fait réellement IQ Optimizer.",
+    "features": {
+      "networkOptimizer": {
+        "title": "Optimiseur Réseau",
+        "description": "Priorise le trafic gaming et stabilise votre connexion pour un ping plus bas et moins de pics de lag."
+      },
+      "fpsBoost": {
+        "title": "Moteur Boost FPS",
+        "description": "Maximise les taux de rafraîchissement en réallouant les ressources système et en arrêtant les tâches d'arrière-plan non essentielles.",
+        "improvement": "Jusqu'à"
+      },
+      "systemCleanup": {
+        "title": "Nettoyage Système en Temps Réel",
+        "description": "Libère la RAM et le CPU en désactivant les processus inutiles pendant que vous jouez — sans configuration manuelle.",
+        "time": "12:45 PM",
+        "status1": "// Libération RAM & CPU...",
+        "status2": "Processus inutiles désactivés"
+      },
+      "windowsTuning": {
+        "title": "Réglage Windows",
+        "description": "Ajuste les paramètres Windows qui limitent généralement les performances — des plans d'alimentation aux effets visuels."
+      }
+    }
+
+}
+
+
+}

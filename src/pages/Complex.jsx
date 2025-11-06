@@ -1,4 +1,5 @@
 import { Download, Play, Settings, Zap, Wifi, Cpu, ExternalLink, Rocket, TrendingUp, Sliders, Server, Pause, Activity } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const MOCKUP_IMAGE_URL = "https://i.imgur.com/12ScT1Q.png";
 
@@ -105,7 +106,7 @@ const Complex = () => {
             )
         },
     ];
-
+    const { t } = useTranslation();
     return (
         <section className="relative min-h-screen ">
             <div className="absolute inset-0 pointer-events-none">
@@ -151,7 +152,6 @@ const Complex = () => {
                     </svg>
                 </div>
 
-                {/* Horizontal Line Bottom */}
                 <div className="hidden xl:flex absolute md:bottom-22 xl:bottom-28 xl:right-140 transform -translate-x-1/2">
                     <svg width="222" height="1" viewBox="0 0 222 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="222" y2="0.5" stroke="white"/>
@@ -163,19 +163,19 @@ const Complex = () => {
                 <div className="flex flex-col gap-6 md:flex-row xl:flex-row justify-between xl:gap-32 items-center mb-32">
                     <div className="text-left">
                         <h1 className="text-4xl font-bold text-white mb-16 leading-tight -mt-10">
-                            <span className="text-white">No complex settings,</span>
+                            <span className="text-white">{t('No_complex_settings,')}</span>
                             <br />
-                            <span className="text-white">No confusing menus,</span>
+                            <span className="text-white">{t('No_confusing_menus,')}</span>
                             <br />
                             <span className="text-white">
-                                Just Results.
-                            </span>
+          {t('Just_Results.')}
+        </span>
                         </h1>
                         <a
                             href="#"
                             className="inline-flex items-center justify-center px-4 py-4.5 gap-4 text-sm  font-medium text-white bg-blue-600 rounded-[16px] hover:bg-blue-700 transition"
                         >
-                            How it works ? <ExternalLink size={18} />
+                            {t('How_it_works')} <ExternalLink size={18} />
                         </a>
                     </div>
                     <img
@@ -184,11 +184,7 @@ const Complex = () => {
                         className="w-['500px'] h-auto rounded-xl shadow-2xl mt-8"
                     />
                 </div>
-
-
-
             </div>
-
             <style jsx>{`
                 @keyframes ping {
                     75%, 100% {

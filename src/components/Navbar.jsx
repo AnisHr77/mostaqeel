@@ -1,8 +1,70 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Download, HelpCircle, Phone, Bug, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+
+// Language utilities that can be imported in other components
+export const languageUtils = {
+    // Available languages
+    languages: [
+        { code: "en", flag: "https://flagcdn.com/w40/us.png", name: "English", dir: "ltr" },
+        { code: "fr", flag: "https://flagcdn.com/w40/fr.png", name: "Français", dir: "ltr" },
+        { code: "ar", flag: "https://flagcdn.com/w40/sa.png", name: "العربية", dir: "rtl" },
+    ],
+
+    // Get current language from localStorage or default to English
+    getCurrentLanguage: () => {
+        if (typeof window !== 'undefined') {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                try {
+                    return JSON.parse(savedLang);
+                } catch (e) {
+                    console.error('Error parsing saved language:', e);
+                }
+            }
+        }
+        return { code: "en", flag: "https://flagcdn.com/w40/us.png", name: "English", dir: "ltr" };
+    },
+
+    // Set language in localStorage and update document direction
+    setCurrentLanguage: (lang) => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('selectedLanguage', JSON.stringify(lang));
+            // Update document direction
+            document.documentElement.dir = lang.dir;
+            document.documentElement.lang = lang.code;
+        }
+    },
+
+    // Get language for use in other components (without React hooks)
+    getLanguageCode: () => {
+        if (typeof window !== 'undefined') {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang) {
+                try {
+                    return JSON.parse(savedLang).code;
+                } catch (e) {
+                    return 'en';
+                }
+            }
+        }
+        return 'en';
+    },
+
+    // Initialize document direction based on saved language
+    initializeDocumentDirection: () => {
+        if (typeof window !== 'undefined') {
+            const currentLang = languageUtils.getCurrentLanguage();
+            document.documentElement.dir = currentLang.dir;
+            document.documentElement.lang = currentLang.code;
+        }
+    }
+};
 
 export default function Navbar() {
+    const { i18n, t } = useTranslation();
+
     const [supportTimeout, setSupportTimeout] = useState(null);
     const handleSupportEnter = () => {
         if (supportTimeout) clearTimeout(supportTimeout);
@@ -18,14 +80,43 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [langOpen, setLangOpen] = useState(false);
     const [supportOpen, setSupportOpen] = useState(false);
-    const [selectedLang, setSelectedLang] = useState({
-        code: "en",
-        flag: "https://flagcdn.com/w40/us.png",
-        name: "English",
-    });
+    const [mobileLangOpen, setMobileLangOpen] = useState(false);
+
+    // Initialize selectedLang from localStorage or default
+    const [selectedLang, setSelectedLang] = useState(() =>
+        languageUtils.getCurrentLanguage()
+    );
+
+    const changeLanguage = (lang) => {
+        i18n.changeLanguage(lang.code);
+        setSelectedLang(lang);
+        setLangOpen(false);
+        setMobileLangOpen(false);
+
+        // Save to localStorage for persistence and update document direction
+        languageUtils.setCurrentLanguage(lang);
+
+        // Dispatch custom event for other components to listen to
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: lang }));
+
+        // Close mobile menu when language is changed
+        setOpen(false);
+    };
+
+    // Initialize language and document direction on component mount
+    useEffect(() => {
+        languageUtils.initializeDocumentDirection();
+
+        const currentLang = languageUtils.getCurrentLanguage();
+        if (currentLang.code !== i18n.language) {
+            i18n.changeLanguage(currentLang.code);
+        }
+        setSelectedLang(currentLang);
+    }, [i18n]);
 
     const langRef = useRef(null);
     const supportRef = useRef(null);
+    const mobileLangRef = useRef(null);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -35,37 +126,41 @@ export default function Navbar() {
             if (supportRef.current && !supportRef.current.contains(event.target)) {
                 setSupportOpen(false);
             }
+            if (mobileLangRef.current && !mobileLangRef.current.contains(event.target)) {
+                setMobileLangOpen(false);
+            }
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     const navLinks = [
-        { name: "How it works", href: "#" },
-        { name: "Pricings", href: "#" },
-        { name: "Games library", href: "#" },
-        { name: "Giveaways", href: "#" },
-        { name: "Log in/SinUp", href: "#" },
+        { name: t('navbar.howItWorks') || "How it works", href: "#" },
+        { name: t('navbar.pricings') || "Pricings", href: "#" },
+        { name: t('navbar.gamesLibrary') || "Games library", href: "#" },
+        { name: t('navbar.giveaways') || "Giveaways", href: "#" },
     ];
 
     const supportLinks = [
-        { name: "FAQ", href: "#", description: "Frequently asked questions", icon: HelpCircle },
-        { name: "Contact Us", href: "#", description: "Get in touch with our team", icon: Phone },
-        { name: "Report Issue", href: "#", description: "Report bugs or problems", icon: Bug },
-        { name: "Documentation", href: "#", description: "User guides and tutorials", icon: BookOpen },
+        { name: t('support.faq') || "FAQ", href: "#", description: t('support.faqDescription') || "Frequently asked questions", icon: HelpCircle },
+        { name: t('support.contactUs') || "Contact Us", href: "#", description: t('support.contactDescription') || "Get in touch with our team", icon: Phone },
+        { name: t('support.reportIssue') || "Report Issue", href: "#", description: t('support.reportDescription') || "Report bugs or problems", icon: Bug },
+        { name: t('support.documentation') || "Documentation", href: "#", description: t('support.docsDescription') || "User guides and tutorials", icon: BookOpen },
     ];
 
-    const languages = [
-        { code: "en", flag: "https://flagcdn.com/w40/us.png", name: "English" },
-        { code: "fr", flag: "https://flagcdn.com/w40/fr.png", name: "Français" },
-        { code: "ar", flag: "https://flagcdn.com/w40/sa.png", name: "العربية" },
-    ];
+    // RTL-aware classes
+    const isRTL = selectedLang.code === 'ar';
+    const flexDirection = isRTL ? 'flex-row-reverse' : 'flex-row';
+    const textAlign = isRTL ? 'text-right' : 'text-left';
+    const spaceX = isRTL ? 'space-x-4' : 'space-x-6';
+    const dropdownPosition = isRTL ? 'right-0' : 'left-0';
+    const mobileDropdownPosition = isRTL ? 'right-0' : 'left-0';
 
     return (
-        <nav className="w-full  fixed top-0 left-0 z-50 bg-[#0c0c14]/95 backdrop-blur-md border-b border-gray-800 font-sans">
+        <nav className="w-full fixed top-0 left-0 z-50 bg-[#0c0c14]/95 backdrop-blur-md border-b border-gray-800 font-sans">
             <div className="max-w-7xl mx-auto px-10 sm:px-5 lg:px-16 py-4 flex items-center justify-between">
                 {/* Left side: Logo + Links */}
-                <div className="flex items-center space-x-6">
+                <div className={`flex items-center ${spaceX}`}>
                     <div className="flex items-center space-x-2">
                         <svg width="47" height="40" viewBox="0 0 47 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_2_23387)">
@@ -119,20 +214,20 @@ export default function Navbar() {
                             onMouseLeave={handleSupportLeave}
                         >
                             <button className="flex items-center space-x-1 text-gray-200 hover:text-white transition-colors duration-200">
-                                Support
+                                {t('navbar.support') || "Support"}
                                 <ChevronDown className="w-4 h-4" />
                             </button>
 
                             {supportOpen && (
-                                <div className="absolute left-0 mt-7 w-xl bg-[#0c0c14] border border-gray-700 rounded-xs shadow-xl z-50 p-2">
+                                <div className={`absolute ${dropdownPosition} mt-7 w-xl bg-[#0c0c14] border border-gray-700 rounded-xs shadow-xl z-50 p-2`}>
                                     {supportLinks.map((item, index) => (
                                         <a
                                             key={index}
                                             href={item.href}
                                             className="flex items-start px-3 py-3 hover:bg-gray-800 rounded-md transition-colors duration-200"
                                         >
-                                            <item.icon className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
-                                            <div>
+                                            <item.icon className={`w-5 h-5 text-blue-400 ${isRTL ? 'ml-3' : 'mr-3'} mt-0.5 flex-shrink-0`} />
+                                            <div className={textAlign}>
                                                 <p className="text-gray-100 font-medium text-sm">{item.name}</p>
                                                 <p className="text-gray-400 text-xs mt-1">{item.description}</p>
                                             </div>
@@ -162,17 +257,16 @@ export default function Navbar() {
                         </button>
 
                         {langOpen && (
-                            <div className="absolute right-0 mt-2 w-48 bg-[#0c0c14] border border-gray-700 rounded-2xl shadow-2xl py-2 z-50">
+                            <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} mt-2 w-48 bg-[#0c0c14] border border-gray-700 rounded-2xl shadow-2xl py-2 z-50`}>
                                 <div className="px-3 py-2 border-b border-gray-700">
-                                    <h3 className="text-white font-semibold text-sm">Select Language</h3>
+                                    <h3 className="text-white font-semibold text-sm text-center">
+                                        {t('navbar.selectLanguage') || "Select Language"}
+                                    </h3>
                                 </div>
-                                {languages.map((lang) => (
+                                {languageUtils.languages.map((lang) => (
                                     <button
                                         key={lang.code}
-                                        onClick={() => {
-                                            setSelectedLang(lang);
-                                            setLangOpen(false);
-                                        }}
+                                        onClick={() => changeLanguage(lang)}
                                         className={`flex items-center gap-3 px-3 py-3 w-full text-gray-300 hover:text-white hover:bg-blue-600/10 transition-all duration-200 ${
                                             selectedLang.code === lang.code ? 'bg-blue-600/20 text-white' : ''
                                         }`}
@@ -208,11 +302,11 @@ export default function Navbar() {
                         variant="outline"
                         className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white md:text-xs  px-5 py-3 font-medium rounded-xl transition-all duration-200 hover:border-gray-600"
                     >
-                        Log in / Sign up
+                        {t('navbar.loginSignup') || "Log in / Sign up"}
                     </Button>
 
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 md:text-xs font-medium flex items-center gap-2 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25">
-                        Download Free
+                        {t('navbar.downloadFree') || "Download Free"}
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.37592 12.7491C8.84037 14.2136 11.2147 14.2136 12.6792 12.7492L15.356 10.0724C15.8525 9.59284 15.8663 8.80151 15.3867 8.30495C14.9071 7.80838 14.1157 7.79463 13.6192 8.27424C13.6087 8.28428 13.5985 8.29456 13.5885 8.30495L11.2693 10.6233L11.2501 1.25C11.2501 0.559648 10.6904 0 10.0001 0C9.30975 0 8.7501 0.559648 8.7501 1.25L8.7676 10.6049L6.46678 8.30413C5.97021 7.82452 5.17889 7.83827 4.69928 8.33483C4.23143 8.81924 4.23143 9.58721 4.69928 10.0716L7.37592 12.7491Z" fill="white"/>
                             <path d="M18.75 10.0825C18.0596 10.0825 17.5 10.6422 17.5 11.3325V15.1583C17.4995 15.3464 17.3472 15.4987 17.1592 15.4992H2.84082C2.65277 15.4987 2.50043 15.3464 2.5 15.1583V11.3325C2.5 10.6422 1.94035 10.0825 1.25 10.0825C0.559648 10.0825 0 10.6422 0 11.3325V15.1583C0.00183594 16.7265 1.27266 17.9974 2.84082 17.9992H17.1591C18.7273 17.9974 19.9981 16.7265 20 15.1584V11.3326C20 10.6422 19.4404 10.0825 18.75 10.0825Z" fill="white"/>
@@ -231,6 +325,56 @@ export default function Navbar() {
             {open && (
                 <div className="md:hidden bg-[#0c0c14] min-h-screen border-t border-gray-800 px-8 py-4">
                     <div className="space-y-4">
+                        {/* Language Selector for Mobile */}
+                        <div className="relative" ref={mobileLangRef}>
+                            <button
+                                onClick={() => setMobileLangOpen(!mobileLangOpen)}
+                                className="w-full bg-[#0c0c14] flex items-center justify-between border border-gray-700 px-4 py-3 rounded-2xl text-white hover:bg-zinc-800 transition-colors duration-200"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <img
+                                        src={selectedLang.flag}
+                                        alt={selectedLang.name}
+                                        className="w-6 h-4 object-cover rounded shadow-sm"
+                                    />
+                                    <span className="font-medium text-sm">{selectedLang.name}</span>
+                                </div>
+                                <ChevronDown
+                                    size={16}
+                                    className={`transition-transform duration-200 ${mobileLangOpen ? 'rotate-180' : ''}`}
+                                />
+                            </button>
+
+                            {mobileLangOpen && (
+                                <div className="mt-2 w-full bg-[#0c0c14] border border-gray-700 rounded-2xl shadow-2xl py-2 z-50">
+                                    <div className="px-3 py-2 border-b border-gray-700">
+                                        <h3 className="text-white font-semibold text-sm text-center">
+                                            {t('navbar.selectLanguage') || "Select Language"}
+                                        </h3>
+                                    </div>
+                                    {languageUtils.languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={() => changeLanguage(lang)}
+                                            className={`flex items-center gap-3 px-3 py-3 w-full text-gray-300 hover:text-white hover:bg-blue-600/10 transition-all duration-200 ${
+                                                selectedLang.code === lang.code ? 'bg-blue-600/20 text-white' : ''
+                                            }`}
+                                        >
+                                            <img
+                                                src={lang.flag}
+                                                alt={lang.name}
+                                                className="w-6 h-4 object-cover rounded shadow-sm"
+                                            />
+                                            <span className="font-medium text-sm">{lang.name}</span>
+                                            {selectedLang.code === lang.code && (
+                                                <div className="w-2 h-2 bg-blue-500 rounded-full ml-auto"></div>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -242,7 +386,9 @@ export default function Navbar() {
                         ))}
 
                         <div className="pt-2 border-t border-gray-800">
-                            <p className="text-gray-400 font-medium mb-3">Support</p>
+                            <p className="text-gray-400 font-medium mb-3">
+                                {t('navbar.support') || "Support"}
+                            </p>
                             <div className="space-y-2">
                                 {supportLinks.map((item, index) => (
                                     <a
@@ -250,11 +396,29 @@ export default function Navbar() {
                                         href={item.href}
                                         className="flex items-center text-gray-300 hover:text-white transition-colors duration-200 py-2"
                                     >
-                                        <item.icon className="w-5 h-5 text-blue-400 mr-3" />
+                                        <item.icon className={`w-5 h-5 text-blue-400 ${isRTL ? 'ml-3' : 'mr-3'}`} />
                                         <span>{item.name}</span>
                                     </a>
                                 ))}
                             </div>
+                        </div>
+
+                        {/* Login/SignUp buttons for mobile */}
+                        <div className="pt-4 border-t border-gray-800 flex flex-col gap-4">
+                            <Button
+                                variant="outline"
+                                className="bg-[#1E1E24] border-gray-700 text-white hover:bg-zinc-800 hover:text-white text-sm font-medium py-3 rounded-xl transition-all duration-200 hover:border-gray-600 w-full"
+                            >
+                                {t('navbar.loginSignup') || "Log in / Sign up"}
+                            </Button>
+
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium flex items-center justify-center gap-2 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/25 w-full">
+                                {t('navbar.downloadFree') || "Download Free"}
+                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.37592 12.7491C8.84037 14.2136 11.2147 14.2136 12.6792 12.7492L15.356 10.0724C15.8525 9.59284 15.8663 8.80151 15.3867 8.30495C14.9071 7.80838 14.1157 7.79463 13.6192 8.27424C13.6087 8.28428 13.5985 8.29456 13.5885 8.30495L11.2693 10.6233L11.2501 1.25C11.2501 0.559648 10.6904 0 10.0001 0C9.30975 0 8.7501 0.559648 8.7501 1.25L8.7676 10.6049L6.46678 8.30413C5.97021 7.82452 5.17889 7.83827 4.69928 8.33483C4.23143 8.81924 4.23143 9.58721 4.69928 10.0716L7.37592 12.7491Z" fill="white"/>
+                                    <path d="M18.75 10.0825C18.0596 10.0825 17.5 10.6422 17.5 11.3325V15.1583C17.4995 15.3464 17.3472 15.4987 17.1592 15.4992H2.84082C2.65277 15.4987 2.50043 15.3464 2.5 15.1583V11.3325C2.5 10.6422 1.94035 10.0825 1.25 10.0825C0.559648 10.0825 0 10.6422 0 11.3325V15.1583C0.00183594 16.7265 1.27266 17.9974 2.84082 17.9992H17.1591C18.7273 17.9974 19.9981 16.7265 20 15.1584V11.3326C20 10.6422 19.4404 10.0825 18.75 10.0825Z" fill="white"/>
+                                </svg>
+                            </Button>
                         </div>
                     </div>
                 </div>

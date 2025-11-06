@@ -18,21 +18,26 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import unnamed from "../assets/unnamed.png";
 import {useEffect} from "react";
+import { useTranslation } from "react-i18next";
 
 const Iq = () => {
+    const { t, i18n } = useTranslation();
+    const isRTL = i18n.dir() === 'rtl';
+
     useEffect(() => {
         AOS.init({
             duration: 1200,
             once: true,
         });
     }, []);
+
     const featuresList = [
         {
             icon: Wifi,
             id: 1,
             layout: "vertical-visual-top",
-            title: "Network Optimizer",
-            text: "Prioritizes gaming traffic and stabilizes your connection for lower ping and fewer lag spikes.",
+            title: t('iq.features.networkOptimizer.title'),
+            text: t('iq.features.networkOptimizer.description'),
             visual: (
                 <div className="relative mb-2 left-8 w-70 h-24 flex items-center justify-center ">
                     <div className="relative w-50 h-38 bg-[#151519] rounded-xl border  flex items-center justify-center overflow-hidden shadow-[0_0_50px_-20px_#3457db] ">
@@ -106,8 +111,8 @@ const Iq = () => {
             icon: Pause,
             id: 2,
             layout: "vertical-text-top",
-            title: "FPS Boost Engine",
-            text: "Maximizes frame rates by reallocating system resources and stopping non-essential background tasks.",
+            title: t('iq.features.fpsBoost.title'),
+            text: t('iq.features.fpsBoost.description'),
             visual: (
                 <div className="relative w-50 h-28 flex items-center justify-end">
                     {/* Left clock card */}
@@ -158,8 +163,8 @@ const Iq = () => {
             icon: Cpu,
             id: 3,
             layout: "horizontal",
-            title: "Real-Time System Clean-Up",
-            text: "Frees up RAM and CPU by disabling unnecessary processes while you play — no manual setup.",
+            title: t('iq.features.systemCleanup.title'),
+            text: t('iq.features.systemCleanup.description'),
             visual: (
                 <div className="relative mb-8 px-4 md:px-4 py-4 bg-[#151519] rounded-2xl border   shadow-[0_0_50px_-20px_#3457db]">
                     <div className="absolute -top-8 -right-5 p-3  rounded-full">
@@ -192,9 +197,9 @@ const Iq = () => {
 
                     </div>
 
-                    <p className="text-gray-100 text-xs mb-2">12:45 PM</p>
-                    <p className="text-gray-100 text-[10px]">// Freeing RAM & CPU...</p>
-                    <p className="text-gray-100 text-[10px] mb-6">Unnecessary processes disabled</p>
+                    <p className="text-gray-100 text-xs mb-2">{t('iq.features.systemCleanup.time')}</p>
+                    <p className="text-gray-100 text-[10px]">{t('iq.features.systemCleanup.status1')}</p>
+                    <p className="text-gray-100 text-[10px] mb-6">{t('iq.features.systemCleanup.status2')}</p>
 
                     <div className="flex relative left-16  justify-center gap-2 items-center text-white text-xs ">
 
@@ -254,8 +259,8 @@ const Iq = () => {
             icon: "Settings",
             id: 4,
             layout: "horizontal",
-            title: "Windows Tuning",
-            text: "Adjusts Windows settings that typically bottleneck performance — from power plans to visual effects.",
+            title: t('iq.features.windowsTuning.title'),
+            text: t('iq.features.windowsTuning.description'),
             visual: (
                 <div className="relative w-full flex items-center justify-center">
 
@@ -314,9 +319,9 @@ const Iq = () => {
 
 
     return (
-        <section className= "mb-12">
+        <section className= "mb-12" dir="ltr" >
             <div className="text-center text-4xl px-18 md:px-0 md:text-5xl font-gilroy font-bold  text-white mb-20 leading-snug" >
-                What IQ Optimizer <br /> Actually Does.
+                {t('iq.title')}
             </div>
 
             <div className="mb-8 px-4 gap-24 md:gap-0 md:px-24  relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8  mx-auto" data-aos="fade-up">
@@ -330,7 +335,7 @@ const Iq = () => {
 
                 <div className="lg:col-span-2 flex flex-col justify-center items-center border-r border-[#1E1D22]"  >
                     <FeatureItem feature={featuresList[1]} />
-                    <div className={'text-white text-xs z-10 font-poppins'}>Up to <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
+                    <div className={'text-white text-xs z-10 font-poppins'}>{t('iq.features.fpsBoost.improvement')} <span className={'text-xl font-bold font-poppins z-10'}>40%</span></div>
                 </div>
 
 
